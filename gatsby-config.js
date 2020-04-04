@@ -6,8 +6,20 @@
 
 module.exports = {
   /* Your site config here */
-    siteMetadata: {
-        title: "Anair Test"
+  siteMetadata: {
+    title: "Hi, I am Aaditya",
+    blogtitle: "The Blog of Nair",
+    name: "Aaditya M Nair",
+  },
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/posts/`,
+      },
     },
-    plugins: [`gatsby-plugin-sass`]
+    `gatsby-plugin-sass`,
+    `gatsby-transformer-remark`,
+  ],
 }
