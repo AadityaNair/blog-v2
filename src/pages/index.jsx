@@ -8,8 +8,8 @@ export default ({ data }) => (
     <img src="Test image" alt="author thumb" />
     {/* <h1>{data.site.siteMetadata.title}</h1> */}
     <h3>
-      I'm <strong itemprop="name">{data.site.siteMetadata.name}</strong>, a
-      <em itemprop="jobTitle"> Job Title</em>.
+      I'm <strong itemProp="name">{data.site.siteMetadata.name}</strong>, a
+      <em itemProp="jobTitle"> Job Title</em>.
     </h3>
     <h3>My Bio</h3>
     <nav>
