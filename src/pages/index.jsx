@@ -1,21 +1,30 @@
 import React from "react"
+import { Link } from "gatsby"
+import { graphql } from "gatsby"
+// import Header from "../components/header"
 
-export default () => (
+export default ({ data }) => (
   <div>
     <img src="Test image" alt="author thumb" />
-    <h1>Name of the Blog</h1>
+    {/* <h1>{data.site.siteMetadata.title}</h1> */}
     <h3>
-      I'm <strong itemprop="name">My Name</strong>, a
+      I'm <strong itemprop="name">{data.site.siteMetadata.name}</strong>, a
       <em itemprop="jobTitle"> Job Title</em>.
     </h3>
     <h3>My Bio</h3>
     <nav>
-      <a href="/about" title="about">
-        about
-      </a>
-      <a href="/blog" title="blog">
-        blog
-      </a>
+      <Link to="/about">about</Link>
+      <Link to="/blog">blog</Link>
     </nav>
   </div>
 )
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        name
+      }
+    }
+  }
+`
