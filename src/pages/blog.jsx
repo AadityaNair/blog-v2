@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { Link } from "gatsby"
 // import Header from "../components/header"
 
 // TODO: Pagination
@@ -25,7 +26,9 @@ export default ({ data }) => {
         </li>
         {data.allMarkdownRemark.edges.map(({ node }, index) => (
           <li>
-            <h2>{node.frontmatter.title}</h2>
+            <Link to={node.fields.slug}>
+              <h2>{node.frontmatter.title}</h2>
+            </Link>
             <details>
               <time>someting</time>
               {node.frontmatter.tags}
@@ -49,6 +52,9 @@ export const query = graphql`
             title
             tags
             excerpt
+          }
+          fields {
+            slug
           }
         }
       }
