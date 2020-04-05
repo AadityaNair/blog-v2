@@ -4,10 +4,15 @@ import { Link } from "gatsby"
 // import Header from "../components/header"
 
 // TODO: Pagination
-// TODO: Parse tags correctly
+// TODO: Import Images
 // TODO: Parse markdown in excerpt
 // TODO: Syntax Highlighting for code
 // TODO: details/aside/summary/small for time and tags
+
+function lstags(tagstring) {
+  const l = tagstring.split(" ").map(tag => <div>{tag}</div>)
+  return l
+}
 
 export default ({ data }) => {
   return (
@@ -31,7 +36,7 @@ export default ({ data }) => {
             </Link>
             <details>
               <time>{node.frontmatter.date}</time>
-              {node.frontmatter.tags}
+              {lstags(node.frontmatter.tags)}
             </details>
             <summary>{node.frontmatter.excerpt}</summary>
           </li>
