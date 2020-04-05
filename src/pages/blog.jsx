@@ -8,6 +8,11 @@ import { Link } from "gatsby"
 // TODO: Parse markdown in excerpt
 // TODO: Syntax Highlighting for code
 // TODO: details/aside/summary/small for time and tags
+// TODO: Page for tags
+// TODO: Link tags to tag pages
+// TODO: Meta information
+// TODO: Fix Links at the end
+// TODO: Linking other posts within posts
 
 function lstags(tagstring) {
   const l = tagstring.split(" ").map(tag => <div>{tag}</div>)
