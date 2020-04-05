@@ -13,6 +13,8 @@ import { Link } from "gatsby"
 // TODO: Meta information
 // TODO: Fix Links at the end
 // TODO: Linking other posts within posts
+// TODO: 404 Page
+// TODO: WorkEx Page?
 
 function lstags(tagstring) {
   const l = tagstring.split(" ").map(tag => <div>{tag}</div>)
