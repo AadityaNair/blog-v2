@@ -4,6 +4,7 @@ title: Setup Github Pages with custom domain and Cloudflare
 excerpt: Default is good but having your own domain is better.
 tags: web
 comments: true
+date: 2017-06-01
 ---
 
 Hosting a website is nice. Also, hosting said website is easy. Github, in the form of _[github-pages]_ allows you to throw
@@ -24,7 +25,7 @@ Now to add records, it depends on which type of domain you own, a subdomain (_we
 1. If you own an apex domain:
     * If your DNS provider allows for either `ALIAS` or `ANAME` records, add one of those pointing to `username.github.io`; just like above.
       However, a lot of providers, including mine, don't allow for that.
-    * All providers will allow an `A` record to be added. Add an `A` record from your domain to the IP addresses, 
+    * All providers will allow an `A` record to be added. Add an `A` record from your domain to the IP addresses,
     `192.30.252.153` and `192.30.252.154`.
 
 And, done. To test these changes, the following command should help:
@@ -52,7 +53,7 @@ That's it. You are done. Your website should be accessible from the custom domai
 
 -----------------------
 ## Moving to Cloudflare
-Using [Cloudflare] to serve your websites has a lot of advantages. In addition to having a fast global CDN, you also get HTTPS enabled on your website 
+Using [Cloudflare] to serve your websites has a lot of advantages. In addition to having a fast global CDN, you also get HTTPS enabled on your website
 for free. It also provides DDOS protection and always-online feature, just to name a few. In general, it is a pretty good idea to serve your website
 through cloudflare. Its pretty easy to do so too.
 
@@ -61,7 +62,7 @@ Create an account on cloudlfare and go to the _add website_ section. Enter your 
 with it and a button to select which records will be transfered to cloudflare.
 ![cloudflare domains]({{ "public/images/cf/cf_domlist.png" | relative_url }})
 
-Continue with the process until you see the new nameservers you have been assigned to. Go to your domain registrar and update the 
+Continue with the process until you see the new nameservers you have been assigned to. Go to your domain registrar and update the
 DNS nameservers there. Update the new nameservers there. What this essentially does is tell your registrar that cloudflare will be the
 one managing the records.
 ![nameservers]({{ "public/images/cf/nslist.png" | relative_url }})

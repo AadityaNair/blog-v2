@@ -2,9 +2,9 @@
 layout: post
 title: HA Directory Server setup (Part - I)
 tags: ldap linux
-
+date: 2017-06-17
 excerpt: |
-    Moving to a more reliable setup with multiple servers.  
+    Moving to a more reliable setup with multiple servers.
     Part-1 describes how to setup directory
     servers in multimaster mode and migrating data to it from a single node system.
 ---
@@ -37,20 +37,20 @@ Updates on the _master_ are synced with the _slave_.
 In a _multi-master_ setting, all the involved directories are able to perform reads as well as writes. Hence any updates on one of them
 will be reflected on the other.
 
-To move forward, you will need to be aware of the following terms. This is taken from [RedHat Documentation]:  
-**Smallest Replication Unit:** A database is the smallest unit of replication. That means only a part of the database 
-cant be replicated.  
+To move forward, you will need to be aware of the following terms. This is taken from [RedHat Documentation]:
+**Smallest Replication Unit:** A database is the smallest unit of replication. That means only a part of the database
+cant be replicated.
 **Replicas:** A replica is a database that takes part in replication process.
 
 Our directory only has a single suffix. Hence a replica can be assumed to be the directory itself and the replication unit is the suffix.
 
-**Suppliers and Consumers:** A supplier is the server that holds the replica that is copied to the replica in a different server. 
+**Suppliers and Consumers:** A supplier is the server that holds the replica that is copied to the replica in a different server.
 This different server is then called the consumer. In a master-slave setting, the master is the supplier while slave is the consumer.
-In our case, the multimaster setup, both the servers are suppliers as well as consumers.  
+In our case, the multimaster setup, both the servers are suppliers as well as consumers.
 **Changelog:** The changelog is the record of all the modifications that happen in the server. The directory uses changelogs to synchronize
-the data betwen servers. It is disabled by default.  
-**Replication Manager:** The replication manager is a special entry in the directory with access directory data. 
-The supplier binds to this entry in the consumer to send data to it. In our case, we will use the entry `cn=Directory Manager`  
+the data betwen servers. It is disabled by default.
+**Replication Manager:** The replication manager is a special entry in the directory with access directory data.
+The supplier binds to this entry in the consumer to send data to it. In our case, we will use the entry `cn=Directory Manager`
 **Replication Agreement:** This finally defines the specifics of the replication; like the database to be replicated, the consumer
 server, connection security, etc. The agreement exists only between one consumer and one supplier.
 
@@ -61,14 +61,14 @@ Installation. In `ldap1` and `ldap2` install the directory server and the admin 
 Verify that both setups are working by connecting to it from 389-console and a little traversing of the available suffixes.
 
 For the data import to go smoothly, import any custom schema that you have used. Just drop the schema files to `/etc/dirsrv/slapd-ldapX/schema/`
-Also edit `dse.ldif` on both servers to change any configuration paramenters. Common parameters that could be changed are 
+Also edit `dse.ldif` on both servers to change any configuration paramenters. Common parameters that could be changed are
 `nsslapd-auditlog-logging-enabled` and `nsslapd-sizelimit`
 
 **Note:** Stop the directory server before performing the above step. The directory may edit the `dse.ldif` file on its own and your changes might be lost.
 Similarly, new schema will appear only after the restart.
 
 ## Setup SSL
-SSL is important so that all connections to the directory are encrypted. This is especially important for authentication requests 
+SSL is important so that all connections to the directory are encrypted. This is especially important for authentication requests
 where passwords are transferred. To set this up, I have used Parth Kolekar's [excellent post]. The commandline steps are outlined below.
 The aforementioned blog mentions more techniques.
 
@@ -86,14 +86,14 @@ ldapX $ pk12util -i /tmp/crt.pk12 -d /etc/dirsrv/slapd-ldapX/ # Import pkcs12 ce
 ldapX $ certutil -d /etc/dirsrv/slapd-<instance>/ -A -n "My Local CA" -t CT,, -a -i /path/to/root/certificate.crt  # import root CA certificates.
 {% endhighlight %}
 
-You have now imported the certificates. You now need to enable encrypted connections. This is easily done from 389-console. 
+You have now imported the certificates. You now need to enable encrypted connections. This is easily done from 389-console.
 Enable them at,
 ![enable ssl]({{ "public/images/ldap-mm1/enable-ssl.png" | relative_url }})
 
 Restart server and test to see if things work smoothly.
 
 ## Setup Replication.
-As we mentioned before, replication requires changelogs which is disabled by default. Enable it from the 389-console by 
+As we mentioned before, replication requires changelogs which is disabled by default. Enable it from the 389-console by
 ```Directory Server > Configuration > Replication > Supplier Settings > Enable Changelog```
 
 Within the `Replication > userRoot` tab, enable replicas and enter the replica ID and the the supplier DN. Perform this for both servers
@@ -101,7 +101,7 @@ and ensure that replica id is unique for each server.
 
 ## In sync
 Now we want both of the directories to be in sync with each other. Hence create a new replication agreement in each server, which sends data from
-itself to the other one.  
+itself to the other one.
 Right-Click on `userRoot` and use the wizard to create a new replication agreement. The wizard is pretty self explanatory.
 Just note that once SSL has been setup, you need to use port 636 for connections rather than port 389.
 
@@ -131,7 +131,7 @@ In `ldap-old`,
 
 {% highlight shell %}
 ldap-old $ ip addr add <temp-ip>/<subnet> dev eth0
-ldap-old $ exit 
+ldap-old $ exit
 $ ssh <temp-ip>
 ldap-old $ ip addr delete <ldap-orig-ip>/<subnet> dev eth0
 {% endhighlight %}
@@ -142,10 +142,10 @@ While in `ldap1`, do this,
 ldap1 $ ip addr add <ldap-orig-ip>/<subnet> dev eth0
 {% endhighlight %}
 
-Allow a few seconds for the machine to be discovered. After that `ldap1` will be handling the requests. 
+Allow a few seconds for the machine to be discovered. After that `ldap1` will be handling the requests.
 
-If all goes well, nothing should break. Try logging into accounts that athenticate through your directory. Everything should work 
-seamlessly. Now, if everything is working seamlessly, you would want that all modifications in `ldap1` to be replicated back to 
+If all goes well, nothing should break. Try logging into accounts that athenticate through your directory. Everything should work
+seamlessly. Now, if everything is working seamlessly, you would want that all modifications in `ldap1` to be replicated back to
 `ldap-old` so that once testing should finish and you move back, data is still fresh. Similar to above, create replication from
 one of `ldapX` to `ldap-old`. Use the temporary IP for `ladp-old`. The final replicaton scheme will look like this:
 {% highlight shell %}
@@ -154,11 +154,11 @@ ldap-old <-----------------> ldap1 <------------------> ldap2
 
 
 ## Final words
-Keep an eye on the error logs. There won't be any silent errors. After every step, look at `/var/log/dirsrv/slapd-ldapX/errors` for 
+Keep an eye on the error logs. There won't be any silent errors. After every step, look at `/var/log/dirsrv/slapd-ldapX/errors` for
 anything new. Replication issues can lead to some entries not being present after sync and are very difficult to find otherwise even
 in moderately small directories.
 
-Once you see an issue you can drill down on it by changing the value of `nsslapd-errorlog-level` in `dse.ldif`. Refer [here] for find 
+Once you see an issue you can drill down on it by changing the value of `nsslapd-errorlog-level` in `dse.ldif`. Refer [here] for find
 which values you would need to set.
 
 [early]: https://fedoraproject.org/wiki/Staying_close_to_upstream_projects

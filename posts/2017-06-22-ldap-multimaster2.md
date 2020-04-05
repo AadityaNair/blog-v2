@@ -2,37 +2,37 @@
 layout: post
 title: HA Directory Server setup (Part -II)
 tags: ldap linux
-
+date: 2017-06-22
 excerpt: |
     Moving to a more reliable setup with multiple servers.
     In this final part, we describe how we configure _failover_.
 ---
 
 In the pervious [post], we configured the servers in multimaster mode. This assures us that both
-the servers in the configuration have the same and latest data. In this part, we make sure that if 
-any one server fails, the entire load shifts to the other one.This technically is called _[failover]_. 
+the servers in the configuration have the same and latest data. In this part, we make sure that if
+any one server fails, the entire load shifts to the other one.This technically is called _[failover]_.
 
 The bird's eye view of what we are going to do below is we configure a shared IP across both our servers.
 The directory server will be referenced through this shared IP by other applications. Whenever one of the
-servers fail for any reason, this IP will be taken over by the other server. This way applications never 
-see a server fail except for the minor delay during IP switch. 
+servers fail for any reason, this IP will be taken over by the other server. This way applications never
+see a server fail except for the minor delay during IP switch.
 
 ### Pacemaker, Corosync and High-Availability
 Currently, pacemaker/corosync combo is the go to solution for HA. It is simple enough for small setups while being
 felexible enough for larger ones. In addition to great doumentation they also have a [nice tutorial] for beginners.
-We will be using them for our setup. 
+We will be using them for our setup.
 
-Before you proceed, please read a bit about pacemaker architecture and what various terms mean in its context. 
+Before you proceed, please read a bit about pacemaker architecture and what various terms mean in its context.
 You will need those.
 
 ## Pre-Requisites
-Setup **hostnames** for other servers. In each of the servers edit the `/etc/hosts` file and add the IPs and hostnames for 
+Setup **hostnames** for other servers. In each of the servers edit the `/etc/hosts` file and add the IPs and hostnames for
 both self and the other server. This allows us to refer each server by a hostname and not by their IP.
 {% highlight shell %}
 $ cat /etc/hosts
 192.168.122.10 ldap1
 192.168.122.20 ldap2
-{% endhighlight %}  
+{% endhighlight %}
 Let the shared IP be `10.1.36.79`
 
 Hosts must now be allowed to **SSH into each other**. Not particularly necessary, just nice to have. It will make it
@@ -40,18 +40,18 @@ easier when you have to move things around as we will see next.
 
 Pacemaker authenticates as a **special user** for all its cluster management operations. If you installed things correctly,
 a user `hacluster` has been created. In both machines, set the same password for the user using `passwd hacluster`.
- 
+
 Now for most of the setup's usage, you will refer to the server by its shared IP. So it would be nice if both the hosts
 have **same host keys**. Host keys are used to identify a system to SSH and are generated during first-boot and is unique to the host.
 If the host keys are not the same, SSH will throw an error saying that host keys differ. This will happen after a failover as the shared
-IP now points to a different machine.  
+IP now points to a different machine.
 Sync host keys by replacing all the `/etc/ssh/ssh_host_*` files on one server with the same files as on the other one.
 
 For most of our operation, we would like for a failed server to join the cluster as soon as it boots. To do so, make `pcsd` **run on boot**.
 On a systemd machine, you would accomplish this by a `systemctl enable pcsd.service` from the root shell.
 
 ## Create the Cluster
-To create the cluster we need the nodes to be authenticated for use by pacemaker before creating the actual cluster. 
+To create the cluster we need the nodes to be authenticated for use by pacemaker before creating the actual cluster.
 Pacemaker logs in by the `hacluster` user.
 {% highlight shell %}
 ldap1 $ pcs cluster auth ldap1 ldap2 -u hacluster -p password # Auth
@@ -82,16 +82,16 @@ Daemon Status:
   corosync: active/enabled
   pacemaker: active/enabled
   pcsd: active/enabled
-  
+
 {% endhighlight %}
 
-Since we are only a two-node cluster, we need to set some special properties. 
+Since we are only a two-node cluster, we need to set some special properties.
 * STONITH (Shoot The Other Node In The Head) ensures that a malfunctioning node doesn't corrupt the entire data. As the name
 hints, it does so by powering off the other node. Since one node is always on standby and doesn't work on data, we could disable
 _stonith_ by `pcs property set stonith-enabled=false`
 
 * When a network issue splits a cluster into two connected components, a _quorum_ is used to resolve as to which part will be the
-master and which slave. By definition, quorum works with 3 or more nodes in cluster. Hence we disable doing anything when there is 
+master and which slave. By definition, quorum works with 3 or more nodes in cluster. Hence we disable doing anything when there is
 no quorum by `pcs property set no-quorum-policy=ignore`. Find a bit more information [here].
 
 ## Resources.
@@ -104,12 +104,12 @@ accomplish this.
 {% highlight shell %}
 $ pcs resource create ldap_ip ocf:heartbeat:IPaddr2 ip=10.1.36.79 cidr_netmask=32 op monitor interval=10s
 {% endhighlight %}
-That's it. The IP will be moved whenever the current holder goes down. The resource monitors status every 10 sec as defined by the 
+That's it. The IP will be moved whenever the current holder goes down. The resource monitors status every 10 sec as defined by the
 `interval` option.
 ### Directory start/stop
 The above operation should have been enough. But I had observed some random inconsistencies pop up after an IP switch. So I wanted that
 the directory be stopped before the IP switch and started after. Sadly, we don't have resources available for that by default. Hence
-I cooked up [two simple resources], one that stopped the directory and one that started it. Copy these to `/usr/lib/ocf/resource.d/nair` 
+I cooked up [two simple resources], one that stopped the directory and one that started it. Copy these to `/usr/lib/ocf/resource.d/nair`
 on both servers. Now create the resources:
 {% highlight shell %}
 $ pcs resource create start_ldap ocf:nair:dirsrv_start

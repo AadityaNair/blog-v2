@@ -4,6 +4,7 @@ title: Pulse and X for someone else.
 excerpt: Allow GUI and Sound for separate user.
 tags: snippets
 comments: true
+date: 2017-11-27
 ---
 
 Both PulseAudio(*audio server*) and X server(*display*) have access controls enabled within it that does not allow anyone other

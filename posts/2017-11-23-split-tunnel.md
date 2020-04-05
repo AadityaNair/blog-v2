@@ -4,6 +4,7 @@ title: Split a VPN
 excerpt: How I allow only specific applications to use my VPN.
 tags: networks
 comments: true
+date: 2017-11-23
 ---
 
 Earlier this month, for various reasons (gaming, restrictive local connection, etc), I bought a VPN service.
@@ -15,13 +16,13 @@ Openvpn does have a property where locally destined packet won't go through a VP
 of them do. This allows me to, say, SSH into a local machine while having a P2P application running in
 the background. But it doesn't allow for fine grained control over what applications use the service.
 
-That is what I am aiming for.  
+That is what I am aiming for.
 *Much of this post is a modified/simpler version of [this] blog post.*
 
 ## Pre-requisites
 Almost all of this post deals with *iptables* and *routing*, especially policy routing. So I am assuming that you are
 aware of how those work in linux and are atleast familiar with the commands that modify them (`iptables *` and `ip route` ).
-You are also aware of a bit on *TCP*/*UDP* protocols and the concept of ports. 
+You are also aware of a bit on *TCP*/*UDP* protocols and the concept of ports.
 
 Let's move on to the actual content.
 
@@ -34,7 +35,7 @@ VPN and send all packets from that user through the VPN.
 Create a separate user which will access the VPN.
 {% highlight shell %}
 $ adduser -c "Split Tunnel User" -M -s /bin/bash stunnel
-{% endhighlight %}  
+{% endhighlight %}
 
 Also edit the `/etc/iproute2/rt_tables` file to add a new rule table. Mine now looks like this:
 {% highlight shell %}
@@ -52,7 +53,7 @@ $ sudo openvpn --route-noexec --config config.ovpn
 {% endhighlight %}
 
 Note that the `--route-noexec` parameter is important. This makes sure that openvpn does not add
-any routes by itself. It will just create a new interface and leave it at that.  
+any routes by itself. It will just create a new interface and leave it at that.
 Alternatively, you could add `route-noexec` option in the config file.
 
 Also, note the interface name(probably of the form `tunX`) and the IP address of the said interface.
@@ -73,8 +74,8 @@ $ ip rule add from all fwmark 0x1 lookup vpn
 $ ip route add default via 10.8.8.192 table vpn
 {% endhighlight %}
 
-The first one ensures that all packets marked with 0x1 (traffic from the `stunnel` user from the last step) 
-go through the given table 'vpn'. The next adds the rule in the vpn table that makes sure that the packets 
+The first one ensures that all packets marked with 0x1 (traffic from the `stunnel` user from the last step)
+go through the given table 'vpn'. The next adds the rule in the vpn table that makes sure that the packets
 go through the given IP. Since the IP is of the VPN interface, `tunX`, all such packets will go through the vpn.
 
 ### Making sure they come back.
@@ -99,7 +100,7 @@ redirect everything to any public DNS server of your choice. I myself use Google
 $ iptables -t nat -I OUTPUT -p udp --dport 53 -m owner --uid-owner stunnel -j DNAT --to-destination 8.8.8.8:53
 {% endhighlight %}
 
-Finally, if you want to run GUI applications or anything that gives out sound via the *stunnel* user, 
+Finally, if you want to run GUI applications or anything that gives out sound via the *stunnel* user,
 you have allow for it. That is a topic for a [separate post]
 
 By now, you have a fully functional split tunnel. To run command with vpn, just go,

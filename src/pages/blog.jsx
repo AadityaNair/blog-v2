@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 // import Header from "../components/header"
 
 // TODO: Pagination
-// TODO: Time of Post from name
+// TODO: Parse tags correctly
 // TODO: Parse markdown in excerpt
 // TODO: Syntax Highlighting for code
 // TODO: details/aside/summary/small for time and tags
@@ -30,7 +30,7 @@ export default ({ data }) => {
               <h2>{node.frontmatter.title}</h2>
             </Link>
             <details>
-              <time>someting</time>
+              <time>{node.frontmatter.date}</time>
               {node.frontmatter.tags}
             </details>
             <summary>{node.frontmatter.excerpt}</summary>
@@ -43,7 +43,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
       totalCount
       edges {
         node {
@@ -52,6 +52,7 @@ export const query = graphql`
             title
             tags
             excerpt
+            date(formatString: "DD MMMM, YYYY")
           }
           fields {
             slug

@@ -4,6 +4,7 @@ title: Looking at you, shell
 excerpt: A view into how shell executes commands, via system calls.
 tags: linux
 comments: true
+date: 2017-10-18
 ---
 
 So, the other day I decided to look around how a shell (like `zsh`) goes about executing commands. This time I had my

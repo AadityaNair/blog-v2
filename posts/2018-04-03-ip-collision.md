@@ -4,6 +4,7 @@ title: A tale of two IPs
 excerpt: How I debugged a bad internet connection.
 tags: networks
 comments: true
+date: 2018-04-03
 ---
 
 So, this one time, I started to randomly lose packets. No rhyme or reason. Just packets wouldn't go. They would stop for some time
@@ -85,7 +86,7 @@ $  tcpdump -i eno1
 23:58:46.252335 ARP, Reply dark-star is-at 74:86:7a:49:68:71 (oui Unknown), length 46
 ...
 ```
-FOUND IT. The response to an ARP request for _dark-star_ yeilds two different MAC addresses. And since _dark-star_ was my 
+FOUND IT. The response to an ARP request for _dark-star_ yeilds two different MAC addresses. And since _dark-star_ was my
 system, it meant that some other system, somehow, has the same IP as me. I then found the tool `arping` that can be
 use to detect the exact same issue. Unsurprisingly, the test came positive.
 ```bash
@@ -97,4 +98,3 @@ Received 1 response(s)
 ```
 
 Both of the IPs were same at the end. Look into the man page for `arping` on more details.
-

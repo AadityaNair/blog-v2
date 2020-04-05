@@ -4,6 +4,7 @@ title: List all commands in any man section
 excerpt: A fun way to discover new commands
 tags: snippets linux
 comments: true
+date: 2016-08-21
 ---
 
 So you know that all the _manual pages_ as grouped by sections based on what they do. So what do you do when
