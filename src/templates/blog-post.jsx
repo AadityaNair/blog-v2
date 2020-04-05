@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-// TODO: Hyperlinking sucks
 // TODO: Images, how to?
 
 export default ({ data }) => {
