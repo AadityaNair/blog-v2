@@ -15,6 +15,7 @@ import { Link } from "gatsby"
 // TODO: Linking other posts within posts
 // TODO: 404 Page
 // TODO: WorkEx Page?
+// TODO: Commenting
 
 function lstags(tagstring) {
   const l = tagstring.split(" ").map(tag => <div>{tag}</div>)
