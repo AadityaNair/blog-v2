@@ -20,6 +20,8 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -28,6 +30,7 @@ module.exports = {
         pedantic: true,
         gfm: true,
         plugins: [
+          { resolve: `gatsby-remark-images` },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {

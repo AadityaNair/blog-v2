@@ -88,7 +88,7 @@ ldapX $ certutil -d /etc/dirsrv/slapd-<instance>/ -A -n "My Local CA" -t CT,, -a
 
 You have now imported the certificates. You now need to enable encrypted connections. This is easily done from 389-console.
 Enable them at,
-![enable ssl]({{ "public/images/ldap-mm1/enable-ssl.png" | relative_url }})
+![enable ssl](/images/ldap-mm1/enable-ssl.png)
 
 Restart server and test to see if things work smoothly.
 
