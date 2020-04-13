@@ -28,15 +28,6 @@ export default ({ data }) => {
       {/* <Header /> */}
       <h1>Blog Header</h1>
       <ol>
-        <li>
-          <h2>Blog title</h2>
-
-          <details>
-            <time>Publish Date </time>
-            tags
-          </details>
-          <summary> Short description about the blog</summary>
-        </li>
         {data.allMarkdownRemark.edges.map(({ node }, index) => (
           <li>
             <Link to={node.fields.slug}>
