@@ -152,9 +152,9 @@ That's about it. Now the server should be accessible throgh the shared IP. You c
 To see if the directory is started/stopped correctly, run `watch -n 1 systemctl status dirsrv.target` on a server and watch what
 happens as the other server goes down.
 
-[post]: {% post_url 2017-06-17-ldap-multimaster1 %}
 [failover]: https://en.wikipedia.org/wiki/Failover
 [nice tutorial]: http://clusterlabs.org/doc/en-US/Pacemaker/1.1/html/Clusters_from_Scratch/
 [here]: http://clusterlabs.org/doc/en-US/Pacemaker/1.1/html/Clusters_from_Scratch/_perform_a_failover.html
 [this]: http://clusterlabs.org/doc/en-US/Pacemaker/1.1/html/Pacemaker_Explained/ch05.html#_what_is_a_cluster_resource
 [two simple resources]: https://gist.github.com/AadityaNair/258b9cd11495acf23ebd8dcc39459313
+[post]: /ldap-multimaster1
