@@ -3,19 +3,34 @@ import { graphql } from "gatsby"
 import { Link } from "gatsby"
 // import Header from "../components/header"
 
-// TODO: Pagination
-// TODO: Import Images
-// TODO: Parse markdown in excerpt
-// TODO: Syntax Highlighting for code
-// TODO: details/aside/summary/small for time and tags
-// TODO: Page for tags
-// TODO: Link tags to tag pages
-// TODO: Meta information
-// TODO: Fix Links at the end
-// TODO: Linking other posts within posts
+////////////// BASIC FEATURES //////////////
 // TODO: 404 Page
-// TODO: WorkEx Page?
+// TODO: Contact INFO
+// TODO: Link tags to tag pages
+// TODO: Page for tags
+// TODO: Pagination
+// TODO: Headers/Footers
+// TODO: Add mugshot
+// TODO: Write "AboutMe"
+// TODO: Fill front page
+// TODO: CSS :-P 
+
+////////////// EXTRA FEATURES //////////////
 // TODO: Commenting
+// TODO: WorkEx Page?
+
+////////////// OPTIMISATIONS ///////////////
+// TODO: Meta information
+// TODO: Offline support
+// TODO: PWA Manifest
+// TODO: Sitemap
+// TODO: Robots.txt
+
+////////////// OTHER OPTIONAL ///////////////
+// TODO: details/aside/summary/small for time and tags
+// TODO: Parse markdown in excerpt
+// TODO: RSS Feeds
+// TODO: Typography.js
 
 function lstags(tagstring) {
   const l = tagstring.split(" ").map(tag => <div>{tag}</div>)
