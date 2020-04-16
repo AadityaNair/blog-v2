@@ -10,12 +10,17 @@ export default ({ data }) => (
     {/* <h1>{data.site.siteMetadata.title}</h1> */}
     <h3>
       I'm <strong itemProp="name">{data.site.siteMetadata.name}</strong>, a
-      <em itemProp="jobTitle"> Job Title</em>.
+      <em itemProp="jobTitle"> Software Engineer</em>.
     </h3>
-    <h3>My Bio</h3>
+    <h3>I love exploring how large systems work</h3>
     <nav>
       <Link to="/about">about</Link>
       <Link to="/blog">blog</Link>
+    </nav>
+    <nav>
+      <a>linkedin</a>
+      <a>github</a>
+      <a>email</a>
     </nav>
   </div>
 )
