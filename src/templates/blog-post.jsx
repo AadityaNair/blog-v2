@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { Link } from "gatsby"
 import Footer from "../components/footer"
 
 export default ({ data }) => {
