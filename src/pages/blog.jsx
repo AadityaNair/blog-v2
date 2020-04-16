@@ -1,11 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
-// import Header from "../components/header"
+import Footer from "../components/footer"
 
 ////////////// BASIC FEATURES //////////////
 // TODO: 404 Page
-// TODO: Contact INFO
 // TODO: Link tags to tag pages
 // TODO: Page for tags
 // TODO: Pagination
@@ -13,11 +12,12 @@ import { Link } from "gatsby"
 // TODO: Add mugshot
 // TODO: Write "AboutMe"
 // TODO: Fill front page
-// TODO: CSS :-P 
+// TODO: CSS :-P
+// TODO: Move back from pages
+// TODO: Post metadata below the post title
 
 ////////////// EXTRA FEATURES //////////////
 // TODO: Commenting
-// TODO: WorkEx Page?
 
 ////////////// OPTIMISATIONS ///////////////
 // TODO: Meta information
@@ -31,6 +31,8 @@ import { Link } from "gatsby"
 // TODO: Parse markdown in excerpt
 // TODO: RSS Feeds
 // TODO: Typography.js
+// TODO: WorkEx Page?
+// TODO: More Modualar, use variables
 
 function lstags(tagstring) {
   const l = tagstring.split(" ").map(tag => <div>{tag}</div>)
@@ -42,6 +44,7 @@ export default ({ data }) => {
     <div>
       {/* <Header /> */}
       <h1>Blog Header</h1>
+      <aside>My opinions are my own and shit</aside>
       <ol>
         {data.allMarkdownRemark.edges.map(({ node }, index) => (
           <li>
@@ -56,6 +59,7 @@ export default ({ data }) => {
           </li>
         ))}
       </ol>
+      <Footer />
     </div>
   )
 }

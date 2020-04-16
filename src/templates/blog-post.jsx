@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Footer from "../components/footer"
 
 export default ({ data }) => {
   const post = data.markdownRemark
@@ -7,6 +8,7 @@ export default ({ data }) => {
     <div>
       <h1>{post.frontmatter.title}</h1>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <Footer />
     </div>
   )
 }
