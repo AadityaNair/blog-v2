@@ -3,6 +3,11 @@ import { graphql } from "gatsby"
 import { Link } from "gatsby"
 import Footer from "../components/footer"
 
+function lstags(tagstring) {
+  const l = tagstring.split(" ").map(tag => <div>{tag}</div>)
+  return l
+}
+
 export default ({ data }) => {
   const post = data.markdownRemark
   return (
@@ -11,7 +16,13 @@ export default ({ data }) => {
         <Link to="/blog">go back</Link>
       </aside>
       <h1>{post.frontmatter.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <summary>
+        <p>{lstags(post.frontmatter.tags)}</p>
+        <p>{post.frontmatter.date}</p>
+      </summary>
+      <main>
+        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      </main>
       <Footer />
     </div>
   )
@@ -23,6 +34,8 @@ export const query = graphql`
       html
       frontmatter {
         title
+        tags
+        date(formatString: "DD MMMM, YYYY")
       }
     }
   }
