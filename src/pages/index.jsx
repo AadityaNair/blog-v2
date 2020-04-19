@@ -18,9 +18,9 @@ export default ({ data }) => (
       <Link to="/blog">blog</Link>
     </nav>
     <nav>
-      <a href="linkedin">linkedin</a>
-      <a href="github">github</a>
-      <a href="email">email</a>
+      <a href="https://www.linkedin.com/in/aadityanair/">linkedin</a>
+      <a href="https://github.com/AadityaNair">github</a>
+      <a href="mailto:me@aadityanair.ml">email</a>
     </nav>
   </div>
 )
