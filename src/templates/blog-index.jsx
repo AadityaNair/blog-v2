@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 import Footer from "../components/footer"
 
 ////////////// BASIC FEATURES //////////////
-// TODO: 404 Page
 // TODO: Pagination
 // TODO: Headers
 // TODO: CSS :-P
@@ -40,7 +39,11 @@ function lstags(tagstring) {
   return l
 }
 
-export default ({ data }) => {
+export default props => {
+  const data = props.data
+  // console.log(props)
+  const { pageContext } = props
+  const { previousPagePath, nextPagePath } = pageContext
   return (
     <div>
       {/* <Header /> */}
@@ -60,14 +63,22 @@ export default ({ data }) => {
           </li>
         ))}
       </ol>
+      <div>
+        {previousPagePath ? <Link to={previousPagePath}>Previous</Link> : null}
+        {nextPagePath ? <Link to={nextPagePath}>Next</Link> : null}
+      </div>
       <Footer />
     </div>
   )
 }
 
 export const query = graphql`
-  query {
-    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
+  query($skip: Int!, $limit: Int!) {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: frontmatter___date }
+      skip: $skip
+      limit: $limit
+    ) {
       edges {
         node {
           id
