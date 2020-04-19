@@ -5,19 +5,16 @@ import Footer from "../components/footer"
 
 ////////////// BASIC FEATURES //////////////
 // TODO: 404 Page
-// TODO: Link tags to tag pages
-// TODO: Page for tags
 // TODO: Pagination
-// TODO: Headers/Footers
-// TODO: Add mugshot
-// TODO: Write "AboutMe"
-// TODO: Fill front page
+// TODO: Headers
 // TODO: CSS :-P
 // TODO: Move back from pages
-// TODO: Post metadata below the post title
 
 ////////////// EXTRA FEATURES //////////////
 // TODO: Commenting
+// TODO: Reading Time
+// TODO: Outline of a post
+// TODO: Link to subsections within posts
 
 ////////////// OPTIMISATIONS ///////////////
 // TODO: Meta information
@@ -35,7 +32,11 @@ import Footer from "../components/footer"
 // TODO: More Modualar, use variables
 
 function lstags(tagstring) {
-  const l = tagstring.split(" ").map(tag => <div>{tag}</div>)
+  const l = tagstring.split(" ").map(tag => (
+    <div>
+      <Link to={"/tags#" + tag}>{tag}</Link>
+    </div>
+  ))
   return l
 }
 
@@ -67,7 +68,6 @@ export default ({ data }) => {
 export const query = graphql`
   query {
     allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
-      totalCount
       edges {
         node {
           id

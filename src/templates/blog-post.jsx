@@ -4,7 +4,11 @@ import { Link } from "gatsby"
 import Footer from "../components/footer"
 
 function lstags(tagstring) {
-  const l = tagstring.split(" ").map(tag => <div>{tag}</div>)
+  const l = tagstring.split(" ").map(tag => (
+    <div>
+      <Link to={"/tags#" + tag}>{tag}</Link>
+    </div>
+  ))
   return l
 }
 
