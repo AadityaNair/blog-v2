@@ -10,6 +10,7 @@ module.exports = {
     title: "Hi, I am Aaditya",
     blogtitle: "The Blog of Nair",
     name: "Aaditya M Nair",
+    siteUrl: `http://aadityanair.ml`,
   },
   plugins: [
     {
@@ -56,6 +57,30 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `The Blog of Nair`,
+        short_name: `NairBlog`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `static/icon.svg`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/about`, `/blog/*`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: [`/tags`],
       },
     },
   ],
