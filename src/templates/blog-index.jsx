@@ -4,16 +4,12 @@ import { Link } from "gatsby"
 import Footer from "../components/footer"
 
 ////////////// BASIC FEATURES //////////////
-// TODO: Pagination
 // TODO: Headers
 // TODO: CSS :-P
 // TODO: Move back from pages
 
 ////////////// EXTRA FEATURES //////////////
 // TODO: Commenting
-// TODO: Reading Time
-// TODO: Outline of a post
-// TODO: Link to subsections within posts
 
 ////////////// OPTIMISATIONS ///////////////
 // TODO: Meta information
@@ -58,6 +54,7 @@ export default props => {
             <details>
               <time>{node.frontmatter.date}</time>
               {lstags(node.frontmatter.tags)}
+              <div>{node.timeToRead} min read</div>
             </details>
             <summary>{node.frontmatter.excerpt}</summary>
           </li>
@@ -81,7 +78,8 @@ export const query = graphql`
     ) {
       edges {
         node {
-          id
+          timeToRead
+          tableOfContents
           frontmatter {
             title
             tags

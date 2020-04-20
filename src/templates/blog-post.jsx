@@ -23,6 +23,8 @@ export default ({ data }) => {
       <summary>
         <p>{lstags(post.frontmatter.tags)}</p>
         <p>{post.frontmatter.date}</p>
+        <p>{post.timeToRead} min read</p>
+        <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
       </summary>
       <main>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -41,6 +43,8 @@ export const query = graphql`
         tags
         date(formatString: "DD MMMM, YYYY")
       }
+      timeToRead
+      tableOfContents
     }
   }
 `
