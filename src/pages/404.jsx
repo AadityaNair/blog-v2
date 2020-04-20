@@ -4,8 +4,8 @@ import Footer from "../components/footer"
 
 export default () => (
   <div>
-    You seem to have stumbled somewhere weird
-    <Link to="/">Go Home</Link>
+    You have reached the world's edge. None but devils play past here....
+    <Link to="/">Turn Back</Link>
     <Footer />
   </div>
 )
