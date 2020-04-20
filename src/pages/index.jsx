@@ -2,10 +2,30 @@ import React from "react"
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
+import { Helmet } from "react-helmet"
+
 // import Header from "../components/header"
 
 export default ({ data }) => (
   <div>
+    <Helmet defer={false} defaultTitle="The Blog of Nair">
+      <html lang="en-gb" />
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <meta name="author" content="Aaditya M Nair" />
+      <meta name="description" content="My experience and stuff" />
+
+      <meta property="og:image" content="" />
+      <meta property="og:description" content="" />
+      <meta property="og:title" content="" />
+
+      <meta property="og:article:published_time" content="" />
+      <meta property="og:article:author" content="" />
+      <meta property="og:article:tag" content="" />
+      <meta property="tags" content="a,b,c,d" />
+    </Helmet>
+
     <Img fixed={data.file.childImageSharp.fixed} alt="author thumb" />
     {/* <h1>{data.site.siteMetadata.title}</h1> */}
     <h3>
