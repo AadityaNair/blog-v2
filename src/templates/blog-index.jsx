@@ -2,21 +2,16 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
 import Footer from "../components/footer"
+import Header from "../components/header"
 
 ////////////// BASIC FEATURES //////////////
-// TODO: Headers
 // TODO: CSS :-P
-// TODO: Move back from pages
 
 ////////////// EXTRA FEATURES //////////////
 // TODO: Commenting
 
 ////////////// OPTIMISATIONS ///////////////
 // TODO: Meta information
-// TODO: Offline support
-// TODO: PWA Manifest
-// TODO: Sitemap
-// TODO: Robots.txt
 
 ////////////// OTHER OPTIONAL ///////////////
 // TODO: details/aside/summary/small for time and tags
@@ -42,7 +37,7 @@ export default props => {
   const { previousPagePath, nextPagePath } = pageContext
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       <h1>Blog Header</h1>
       <aside>My opinions are my own and shit</aside>
       <ol>

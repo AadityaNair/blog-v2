@@ -1,7 +1,10 @@
 import React from "react"
+import Header from "../components/header"
+import Footer from "../components/footer"
 
 export default () => (
   <div>
+    <Header />
     <article>
       But I must explain to you how all this mistaken idea of denouncing
       pleasure and praising pain was born and I will give you a complete account
@@ -18,5 +21,6 @@ export default () => (
       chooses to enjoy a pleasure that has no annoying consequences, or one who
       avoids a pain that produces no resultant pleasure?
     </article>
+    <Footer />
   </div>
 )

@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
 import Footer from "../components/footer"
+import Header from "../components/header"
 
 function lstags(tagstring) {
   const l = tagstring.split(" ").map(tag => (
@@ -16,9 +17,7 @@ export default ({ data }) => {
   const post = data.markdownRemark
   return (
     <div>
-      <aside>
-        <Link to="/blog">go back</Link>
-      </aside>
+      <Header />
       <h1>{post.frontmatter.title}</h1>
       <summary>
         <p>{lstags(post.frontmatter.tags)}</p>
