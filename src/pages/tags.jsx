@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
-import Footer from "../components/footer"
 
 // The logic flow can probably be improved a *lot*
 // There is probably a graphQL query that solves everything I am doing
