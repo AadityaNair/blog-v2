@@ -49,6 +49,7 @@ export const query = graphql`
         title
         tags
         date(formatString: "DD MMMM, YYYY")
+        excerpt
       }
       timeToRead
       tableOfContents
