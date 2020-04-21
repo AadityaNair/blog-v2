@@ -1,9 +1,15 @@
 import React from "react"
 import Header from "../components/header"
 import Footer from "../components/footer"
+import Metadata from "../components/meta"
 
 export default () => (
   <div>
+    <Metadata
+      isBlogPost={false}
+      title="About Me"
+      description="What you need to know about me"
+    />
     <Header />
     <article>
       But I must explain to you how all this mistaken idea of denouncing

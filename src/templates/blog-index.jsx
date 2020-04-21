@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import { Link } from "gatsby"
 import Footer from "../components/footer"
 import Header from "../components/header"
+import Metadata from "../components/meta"
 
 ////////////// BASIC FEATURES //////////////
 // TODO: CSS :-P
@@ -14,12 +15,12 @@ import Header from "../components/header"
 // TODO: Meta information
 
 ////////////// OTHER OPTIONAL ///////////////
-// TODO: details/aside/summary/small for time and tags
 // TODO: Parse markdown in excerpt
 // TODO: RSS Feeds
-// TODO: Typography.js
 // TODO: WorkEx Page?
 // TODO: More Modualar, use variables
+// TODO: CSS Library
+// TODO: PurgeCSS
 
 function lstags(tagstring) {
   const l = tagstring.split(" ").map(tag => (
@@ -37,6 +38,12 @@ export default props => {
   const { previousPagePath, nextPagePath } = pageContext
   return (
     <div>
+      <Metadata
+        isBlogPost={false}
+        title="The Blog of Nair"
+        description="Collection of my works. All opinions my own"
+      />
+
       <Header />
       <h1>Blog Header</h1>
       <aside>My opinions are my own and shit</aside>
