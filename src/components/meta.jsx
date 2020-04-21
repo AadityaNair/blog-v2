@@ -2,6 +2,10 @@ import React, { Fragment } from "react"
 import { Helmet } from "react-helmet"
 
 // TODO: Fix this function not rendering
+// I am pretty sure that Helmet doesn't support "most of og:*" properties
+// Or, it doesn't support components within components. Idk.
+// Investigate whenever possible.
+// Also lookup, https://developers.google.com/search/docs/guides/intro-structured-data
 function BlogMetaData(props) {
   const tagstring = props.tags
   return (
