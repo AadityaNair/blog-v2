@@ -12,7 +12,7 @@ import Metadata from "../components/meta"
 // TODO: Commenting
 
 ////////////// OPTIMISATIONS ///////////////
-// TODO: Meta information
+// TODO: Fix Metadata
 
 ////////////// OTHER OPTIONAL ///////////////
 // TODO: Parse markdown in excerpt
@@ -21,6 +21,8 @@ import Metadata from "../components/meta"
 // TODO: More Modualar, use variables
 // TODO: CSS Library
 // TODO: PurgeCSS
+// TODO: Transition link Gatsby
+// TODO: AnimeJS
 
 function lstags(tagstring) {
   const l = tagstring.split(" ").map(tag => (
