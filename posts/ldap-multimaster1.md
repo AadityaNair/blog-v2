@@ -72,19 +72,19 @@ SSL is important so that all connections to the directory are encrypted. This is
 where passwords are transferred. To set this up, I have used Parth Kolekar's [excellent post]. The commandline steps are outlined below.
 The aforementioned blog mentions more techniques.
 
-{% highlight shell %}
+```shell-session
 ldapX $ echo "Internal (Software) Token:password" > /etc/dirsrv/slapd-ldapX/pin.txt
 ldapX $ chmod 400 /etc/dirsrv/slapd-ldapX/pin.txt
-{% endhighlight %}
+```
 Restart the server and test using,
-{% highlight shell %} $ ldapsearch -x -b <base> -H <host> -ZZ {% endhighlight %}
+```shell-session $ ldapsearch -x -b <base> -H <host> -ZZ ```
 
 To setup the certificates,
-{% highlight shell %}
+```shell-session
 ldapX $ openssl pkcs12 -export -inkey iiit.ac.in.key -in iiit.ac.in.crt -out /tmp/crt.pk12 -nodes -name 'Server-Cert' # Export to pkcs12 format
 ldapX $ pk12util -i /tmp/crt.pk12 -d /etc/dirsrv/slapd-ldapX/ # Import pkcs12 certificate
 ldapX $ certutil -d /etc/dirsrv/slapd-<instance>/ -A -n "My Local CA" -t CT,, -a -i /path/to/root/certificate.crt  # import root CA certificates.
-{% endhighlight %}
+```
 
 You have now imported the certificates. You now need to enable encrypted connections. This is easily done from 389-console.
 Enable them at,
@@ -106,9 +106,9 @@ Right-Click on `userRoot` and use the wizard to create a new replication agreeme
 Just note that once SSL has been setup, you need to use port 636 for connections rather than port 389.
 
 The setup is like this:
-{% highlight shell %}
+```shell-session
 ldap1 <-------------------> ldap2
-{% endhighlight %}
+```
 
 With both directories synchronized, now any update on one will be reflected on the other. To test this, create an entry on one server and see
 that it is reflected on the other as well.
@@ -119,9 +119,9 @@ create replication between `ldap-old` and one of servers in `ldapX`. This ensure
 and allows us keep using `ldap-old` till we are sure that everything is peachy.
 
 This should be the current replication scheme:
-{% highlight shell %}
+```shell-session
 ldap-old -------------------> ldap1 <----------------> ldap2
-{% endhighlight %}
+```
 
 ## Testing
 For testing, we want to ensure that all the requests to `ldap-old` now goes to one of `ldapX` so as to see if anything breaks.
@@ -129,18 +129,18 @@ We will change the system configuration so that `ldap1`, in addition to its own 
 We also configure `ldap-old` with a new temporary IP so that we can still access it.
 In `ldap-old`,
 
-{% highlight shell %}
+```shell-session
 ldap-old $ ip addr add <temp-ip>/<subnet> dev eth0
 ldap-old $ exit
 $ ssh <temp-ip>
 ldap-old $ ip addr delete <ldap-orig-ip>/<subnet> dev eth0
-{% endhighlight %}
+```
 
 While in `ldap1`, do this,
 
-{% highlight shell %}
+```shell-session
 ldap1 $ ip addr add <ldap-orig-ip>/<subnet> dev eth0
-{% endhighlight %}
+```
 
 Allow a few seconds for the machine to be discovered. After that `ldap1` will be handling the requests.
 
@@ -148,9 +148,9 @@ If all goes well, nothing should break. Try logging into accounts that athentica
 seamlessly. Now, if everything is working seamlessly, you would want that all modifications in `ldap1` to be replicated back to
 `ldap-old` so that once testing should finish and you move back, data is still fresh. Similar to above, create replication from
 one of `ldapX` to `ldap-old`. Use the temporary IP for `ladp-old`. The final replicaton scheme will look like this:
-{% highlight shell %}
+```shell-session
 ldap-old <-----------------> ldap1 <------------------> ldap2
-{% endhighlight %}
+```
 
 
 ## Final words

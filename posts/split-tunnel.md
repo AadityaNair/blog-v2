@@ -33,24 +33,24 @@ VPN and send all packets from that user through the VPN.
 
 ### One time stuff: Create users and the rule table.
 Create a separate user which will access the VPN.
-{% highlight shell %}
+```sh
 $ adduser -c "Split Tunnel User" -M -s /bin/bash stunnel
-{% endhighlight %}
+```
 
 Also edit the `/etc/iproute2/rt_tables` file to add a new rule table. Mine now looks like this:
-{% highlight shell %}
+```sh
 255 local
 254 main
 253 default
 200 vpn
-{% endhighlight %}
+```
 
 
 ### Creating the tunnel
 Now you will need to actually start the openvpn client and connect to the server.
-{% highlight shell %}
+```sh
 $ sudo openvpn --route-noexec --config config.ovpn
-{% endhighlight %}
+```
 
 Note that the `--route-noexec` parameter is important. This makes sure that openvpn does not add
 any routes by itself. It will just create a new interface and leave it at that.
@@ -63,16 +63,16 @@ We are going to assume the ip address is `10.8.8.192`.
 ### Selecting the packets
 Now we need to select all the packets from the user `stunnel` to go through the tunnel. iptables conveniently
 has a MARK action that, you know, marks them with a number. Hence the rule,
-{% highlight shell %}
+```sh
 $ iptables -t mangle -A OUTPUT -m owner --uid-owner stunnel -j MARK --set-mark 0x1
-{% endhighlight %}
+```
 
 ### Sending them the right way.
 Now that we have the packets, we need to make sure that they go through the tunnel. The following commands do it.
-{% highlight shell %}
+```sh
 $ ip rule add from all fwmark 0x1 lookup vpn
 $ ip route add default via 10.8.8.192 table vpn
-{% endhighlight %}
+```
 
 The first one ensures that all packets marked with 0x1 (traffic from the `stunnel` user from the last step)
 go through the given table 'vpn'. The next adds the rule in the vpn table that makes sure that the packets
@@ -81,14 +81,14 @@ go through the given IP. Since the IP is of the VPN interface, `tunX`, all such 
 ### Making sure they come back.
 Now that packets have gone through the VPN interface, we still haven't changed the source IP to that of
 the VPN. So packets won't be able to return as of now. Hence, we mask the source IP with that of the interface.
-{% highlight shell %}
+```sh
 $ iptables -t nat -I POSTROUTING -o tunX -j MASQUERADE
-{% endhighlight %}
+```
 
 We also need to do this,
-{% highlight shell %}
+```sh
 $ sysctl net/ipv4/conf/tunX/rp_filter=2
-{% endhighlight %}
+```
 Here we have set reverse path filtering to loose mode. This I believe makes sure that kernel doesn't reject the packet
 after the source IP has been unmasked.
 
@@ -96,17 +96,17 @@ after the source IP has been unmasked.
 Now, if you, like my university, only allows for a local DNS server, then you still won't be able to resolve hostnames
 your `resolv.conf` still points to the local nameservers which you cannot access while using VPN. To get around this,
 redirect everything to any public DNS server of your choice. I myself use Google's DNS.
-{% highlight shell %}
+```
 $ iptables -t nat -I OUTPUT -p udp --dport 53 -m owner --uid-owner stunnel -j DNAT --to-destination 8.8.8.8:53
-{% endhighlight %}
+```
 
 Finally, if you want to run GUI applications or anything that gives out sound via the *stunnel* user,
 you have allow for it. That is a topic for a [separate post]
 
 By now, you have a fully functional split tunnel. To run command with vpn, just go,
-{% highlight shell %}
+```sh
 $ sudo -u stunnel -i -- <command>
-{% endhighlight %}
+```
 
 [this]: https://www.htpcguides.com/force-torrent-traffic-vpn-split-tunnel-ubuntu-14-04/
-[separate post]: {% post_url 2017-11-27-allow-x-pulse %}
+[separate post]: /allow-x-pulse

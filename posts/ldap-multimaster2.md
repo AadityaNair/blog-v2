@@ -28,11 +28,11 @@ You will need those.
 ## Pre-Requisites
 Setup **hostnames** for other servers. In each of the servers edit the `/etc/hosts` file and add the IPs and hostnames for
 both self and the other server. This allows us to refer each server by a hostname and not by their IP.
-{% highlight shell %}
+```shell-session
 $ cat /etc/hosts
 192.168.122.10 ldap1
 192.168.122.20 ldap2
-{% endhighlight %}
+```
 Let the shared IP be `10.1.36.79`
 
 Hosts must now be allowed to **SSH into each other**. Not particularly necessary, just nice to have. It will make it
@@ -53,19 +53,19 @@ On a systemd machine, you would accomplish this by a `systemctl enable pcsd.serv
 ## Create the Cluster
 To create the cluster we need the nodes to be authenticated for use by pacemaker before creating the actual cluster.
 Pacemaker logs in by the `hacluster` user.
-{% highlight shell %}
+```shell-session
 ldap1 $ pcs cluster auth ldap1 ldap2 -u hacluster -p password # Auth
 
 ldap1 $ pcs cluster setup --name ldap_cluster ldap1 ldap2 # Actual cluster creation
 
 ldap1 $ pcs cluster start --all
-{% endhighlight %}
+```
 
 All of these commands should end wihout errors. Also note that all of pacemaker commands can be run from either of the nodes.
 It would make no difference.
 
 If everything went well, the cluster status should be similar to this:
-{% highlight shell %}
+```shell-session
 ldap1 $ pcs status
 Cluster name: ldap_cluster
 Stack: corosync
@@ -83,7 +83,7 @@ Daemon Status:
   pacemaker: active/enabled
   pcsd: active/enabled
 
-{% endhighlight %}
+```
 
 Since we are only a two-node cluster, we need to set some special properties.
 * STONITH (Shoot The Other Node In The Head) ensures that a malfunctioning node doesn't corrupt the entire data. As the name
@@ -101,9 +101,9 @@ We will configure resources to switch IPs on failure and to stop and start 389-d
 ### IP failover
 Whenever a server goes down we need to make sure the other system gets the shared IP. Luckily, we have a default resource available to
 accomplish this.
-{% highlight shell %}
+```shell-session
 $ pcs resource create ldap_ip ocf:heartbeat:IPaddr2 ip=10.1.36.79 cidr_netmask=32 op monitor interval=10s
-{% endhighlight %}
+```
 That's it. The IP will be moved whenever the current holder goes down. The resource monitors status every 10 sec as defined by the
 `interval` option.
 ### Directory start/stop
@@ -111,33 +111,33 @@ The above operation should have been enough. But I had observed some random inco
 the directory be stopped before the IP switch and started after. Sadly, we don't have resources available for that by default. Hence
 I cooked up [two simple resources], one that stopped the directory and one that started it. Copy these to `/usr/lib/ocf/resource.d/nair`
 on both servers. Now create the resources:
-{% highlight shell %}
+```shell-session
 $ pcs resource create start_ldap ocf:nair:dirsrv_start
 $ pcs resource create stop_ldap ocf:nair:dirsrv_stop
-{% endhighlight %}
+```
 
 ## Constraints
 Just creating a resource is not enough. We also have to make sure that these resources run in the right place and in the right order. For example,
 `dirsrv_stop` should never run after `dirsrv_start`. To accomplish this, pacemaker defines constraints.
 * **Collocation constraints** are used to define where a resource will run with what priority. We use them to make sure that the directory
 restart is attempted only where the shared IP is now. No point in doing so on the other server.
-{% highlight shell %}
+```shell-session
 $ pcs constraint colocation add stop_ldap with ldap_ip INFINITY
 $ pcs constraint colocation add start_ldap with ldap_ip INFINITY
-{% endhighlight %}
+```
   The command is pretty self-explanatory. But make sure that the order of resource names in the above command is important. To have `stop_ldap`
   with `ldap_ip`, we need to know where `ldap_ip` is going to be beforehand, which is how things should be and not the other way round.
 
 * We use **Order Constraints** to impose an ordering on resources' start and stop actions.
 We need to make sure that `stop_ldap` happens before `ldap_ip` which itself happens before `start_ldap`.
-{% highlight shell %}
+```shell-session
 $ pcs constraint order stop_ldap then ldap_ip
 $ pcs constraint order ldap_ip then start_ldap
-{% endhighlight %}
+```
 Again the commands are pretty self explanatory.
 
 Finally things should look like this.
-{% highlight shell %}
+```shell-session
 $  pcs constraint --full
 Location Constraints:
 Ordering Constraints:
@@ -146,7 +146,7 @@ Ordering Constraints:
 Colocation Constraints:
   start_ldap with ldap_ip (score:INFINITY) (id:colocation-start_ldap-ldap_ip-INFINITY)
   stop_ldap with ldap_ip (score:INFINITY) (id:colocation-stop_ldap-ldap_ip-INFINITY)
-{% endhighlight %}
+```
 
 That's about it. Now the server should be accessible throgh the shared IP. You could test the failover in various ways.
 To see if the directory is started/stopped correctly, run `watch -n 1 systemctl status dirsrv.target` on a server and watch what

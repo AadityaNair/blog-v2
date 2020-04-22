@@ -29,17 +29,17 @@ Now to add records, it depends on which type of domain you own, a subdomain (_we
     `192.30.252.153` and `192.30.252.154`.
 
 And, done. To test these changes, the following command should help:
-{% highlight shell%}
+```sh
     $ dig +short @8.8.8.8 example.com A
     192.30.252.153
     192.30.252.154
-{% endhighlight %}
+```
 for apex domains _and_
 
-{% highlight shell%}
+```sh
     $ dig +short @8.8.8.8 website.example.com CNAME
     username.github.io
-{% endhighlight %}
+```
 for subdomains.
 
 Do note that records take around a day to propagate and changes may not be immediately seen
