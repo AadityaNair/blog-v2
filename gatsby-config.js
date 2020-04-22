@@ -32,6 +32,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

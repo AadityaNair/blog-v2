@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Metadata from "../components/meta"
+import "../styles/mystyle.css"
 
 export default ({ data }) => (
   <div>
@@ -11,12 +12,19 @@ export default ({ data }) => (
       title="The website of Nair"
       description="My experience as a Software Engineer"
     />
-    <Img fixed={data.file.childImageSharp.fixed} alt="author thumb" />
+    <Img
+      // className="h-16 w-16 rounded"
+      fixed={data.file.childImageSharp.fixed}
+      alt="author thumb"
+    />
     {/* <h1>{data.site.siteMetadata.title}</h1> */}
-    <h3>
-      I'm <strong itemProp="name">{data.site.siteMetadata.name}</strong>, a
-      <em itemProp="jobTitle"> Software Engineer</em>.
-    </h3>
+    <h1>
+      I'm{" "}
+      <strong className="text-purple-500" itemProp="name">
+        {data.site.siteMetadata.name}
+      </strong>
+      , a<em itemProp="jobTitle"> Software Engineer</em>.
+    </h1>
     <h3>I love exploring how large systems work</h3>
     <nav>
       <Link to="/about">about</Link>
