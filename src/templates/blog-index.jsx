@@ -5,23 +5,23 @@ import Footer from "../components/footer"
 import Header from "../components/header"
 import Metadata from "../components/meta"
 
-////////////// BASIC FEATURES //////////////
-// TODO: CSS :-P
+////////////// CSS FEATURES //////////////
+// Website Theme
+// Fix me face
+// PurgeCSS
+// Transition Link Gatsby
 
 ////////////// EXTRA FEATURES //////////////
 // TODO: Commenting
 
 ////////////// OPTIMISATIONS ///////////////
 // TODO: Fix Metadata
+// TODO: More Modualar, use variables
 
 ////////////// OTHER OPTIONAL ///////////////
 // TODO: Parse markdown in excerpt
 // TODO: RSS Feeds
 // TODO: WorkEx Page?
-// TODO: More Modualar, use variables
-// TODO: CSS Library
-// TODO: PurgeCSS
-// TODO: Transition link Gatsby
 // TODO: AnimeJS
 
 function lstags(tagstring) {
