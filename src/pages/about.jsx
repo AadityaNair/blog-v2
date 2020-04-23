@@ -5,14 +5,14 @@ import Metadata from "../components/meta"
 import "../styles/mystyle.css"
 
 export default () => (
-  <div className="flex flex-col items-center justify-between h-screen">
+  <div className="flex flex-col items-center justify-between h-screen ">
     <Metadata
       isBlogPost={false}
       title="About Me"
       description="What you need to know about me"
     />
     <Header />
-    <article className="">
+    <article className="md:mx-64 mx-8 text-justify">
       But I must explain to you how all this mistaken idea of denouncing
       pleasure and praising pain was born and I will give you a complete account
       of the system, and expound the actual teachings of the great explorer of
