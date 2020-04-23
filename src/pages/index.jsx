@@ -28,7 +28,7 @@ export default ({ data }) => (
     </h1>
     <h3 className="md:text-3xl ">I love exploring how large systems work</h3>
 
-    <nav className=" flex flex-row box-border h-20 w-32 items-center justify-between">
+    <nav className=" flex flex-row items-center justify-between space-x-6 pt-6">
       <Link className="" to="/about">
         <button>about</button>
       </Link>
@@ -36,7 +36,7 @@ export default ({ data }) => (
         <button>blog</button>
       </Link>
     </nav>
-    <nav className="w-64 flex flex-row box-border h-20 w-32 items-center justify-between">
+    <nav className="flex flex-row items-center justify-between space-x-2 pt-2">
       <a href="https://www.linkedin.com/in/aadityanair/">linkedin</a>
       <a href="https://github.com/AadityaNair">github</a>
       <a href="mailto:me@aadityanair.ml">email</a>
