@@ -5,6 +5,10 @@ import Img from "gatsby-image"
 import Metadata from "../components/meta"
 import "../styles/mystyle.css"
 
+import linkedin from "../assets/linkedin.svg"
+import github from "../assets/github.svg"
+import email from "../assets/email.svg"
+
 export default ({ data }) => (
   <div className="flex flex-col items-center justify-center h-screen ">
     <Metadata
@@ -15,7 +19,7 @@ export default ({ data }) => (
     {/* <div className="flex flex-col justify-center items-center bg-gray-500"> */}
     <Img
       className="rounded-full"
-      fixed={data.file.childImageSharp.fixed}
+      fixed={data.myphoto.childImageSharp.fixed}
       alt="author thumb"
     />
 
@@ -37,9 +41,15 @@ export default ({ data }) => (
       </Link>
     </nav>
     <nav className="flex flex-row items-center justify-between space-x-2 pt-2">
-      <a href="https://www.linkedin.com/in/aadityanair/">linkedin</a>
-      <a href="https://github.com/AadityaNair">github</a>
-      <a href="mailto:me@aadityanair.ml">email</a>
+      <a href="https://www.linkedin.com/in/aadityanair/">
+        <img alt="linkedin" src={linkedin} />
+      </a>
+      <a href="https://github.com/AadityaNair">
+        <img alt="github" src={github} />
+      </a>
+      <a href="mailto:me@aadityanair.ml">
+        <img alt="email" src={email} />
+      </a>
     </nav>
     {/* </div> */}
   </div>
@@ -52,7 +62,7 @@ export const query = graphql`
         name
       }
     }
-    file(relativePath: { eq: "me.jpg" }) {
+    myphoto: file(relativePath: { eq: "me.jpg" }) {
       childImageSharp {
         fixed(height: 125, width: 125) {
           ...GatsbyImageSharpFixed_tracedSVG
