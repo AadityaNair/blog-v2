@@ -11,9 +11,7 @@ export default props => (
     <h1>
       <Link to="/">The Blog of Nair</Link>
     </h1>
-    <a href="#" onClick={goBack}>
-      Go back
-    </a>
+    <button onClick={goBack}>Go back</button>
     <Link to="/about">about</Link>
     <Link to="/blog">blog</Link>
   </header>
