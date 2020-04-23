@@ -4,12 +4,14 @@ import { Link } from "gatsby"
 import Footer from "../components/footer"
 import Header from "../components/header"
 import Metadata from "../components/meta"
+import "../styles/mystyle.css"
 
 ////////////// CSS FEATURES //////////////
 // Website Theme
 // Fix me face
 // PurgeCSS
 // Transition Link Gatsby
+// Fonts
 
 ////////////// EXTRA FEATURES //////////////
 // TODO: Commenting
@@ -39,7 +41,7 @@ export default props => {
   const { pageContext } = props
   const { previousPagePath, nextPagePath } = pageContext
   return (
-    <div>
+    <div className="flex flex-col items-center justify-between h-screen">
       <Metadata
         isBlogPost={false}
         title="The Blog of Nair"
@@ -49,24 +51,28 @@ export default props => {
       <Header />
       <h1>Blog Header</h1>
       <aside>My opinions are my own and shit</aside>
-      <ol>
-        {data.allMarkdownRemark.edges.map(({ node }, index) => (
-          <li>
-            <Link to={node.fields.slug}>
-              <h2>{node.frontmatter.title}</h2>
-            </Link>
-            <details>
-              <time>{node.frontmatter.date}</time>
-              {lstags(node.frontmatter.tags)}
-              <div>{node.timeToRead} min read</div>
-            </details>
-            <summary>{node.frontmatter.excerpt}</summary>
-          </li>
-        ))}
-      </ol>
-      <div>
-        {previousPagePath ? <Link to={previousPagePath}>Previous</Link> : null}
-        {nextPagePath ? <Link to={nextPagePath}>Next</Link> : null}
+      <div className="">
+        <ol>
+          {data.allMarkdownRemark.edges.map(({ node }, index) => (
+            <li>
+              <Link to={node.fields.slug}>
+                <h2>{node.frontmatter.title}</h2>
+              </Link>
+              <details>
+                <time>{node.frontmatter.date}</time>
+                {lstags(node.frontmatter.tags)}
+                <div>{node.timeToRead} min read</div>
+              </details>
+              <summary>{node.frontmatter.excerpt}</summary>
+            </li>
+          ))}
+        </ol>
+        <div>
+          {previousPagePath ? (
+            <Link to={previousPagePath}>Previous</Link>
+          ) : null}
+          {nextPagePath ? <Link to={nextPagePath}>Next</Link> : null}
+        </div>
       </div>
       <Footer />
     </div>

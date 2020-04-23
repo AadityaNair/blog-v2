@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import Footer from "../components/footer"
 import Header from "../components/header"
 import Metadata from "../components/meta"
+import "../styles/mystyle.css"
 
 function lstags(tagstring) {
   const l = tagstring.split(" ").map(tag => (
@@ -17,7 +18,7 @@ function lstags(tagstring) {
 export default ({ data }) => {
   const post = data.markdownRemark
   return (
-    <div>
+    <div className="flex flex-col items-center justify-between h-screen">
       <Metadata
         isBlogPost={true}
         title={post.frontmatter.title}
@@ -33,7 +34,7 @@ export default ({ data }) => {
         <p>{post.timeToRead} min read</p>
         <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
       </summary>
-      <main>
+      <main className="">
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </main>
       <Footer />
