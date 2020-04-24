@@ -16,7 +16,7 @@ export default ({ data }) => (
       title="The website of Nair"
       description="My experience as a Software Engineer"
     />
-    {/* <div className="flex flex-col justify-center items-center bg-gray-500"> */}
+
     <Img
       className="rounded-full"
       fixed={data.myphoto.childImageSharp.fixed}
@@ -32,7 +32,7 @@ export default ({ data }) => (
     </h1>
     <h3 className="md:text-3xl ">I love exploring how large systems work</h3>
 
-    <nav className=" flex flex-row items-center justify-between space-x-6 pt-6">
+    <nav className=" flex flex-row space-x-6 pt-6">
       <Link className="" to="/about">
         <button>about</button>
       </Link>
@@ -51,7 +51,6 @@ export default ({ data }) => (
         <img alt="email" src={email} />
       </a>
     </nav>
-    {/* </div> */}
   </div>
 )
 
