@@ -6,26 +6,6 @@ import Header from "../components/header"
 import Metadata from "../components/meta"
 import "../styles/mystyle.css"
 
-////////////// CSS FEATURES //////////////
-// Website Theme
-// Fix me face
-// PurgeCSS
-// Transition Link Gatsby
-// Fonts
-
-////////////// EXTRA FEATURES //////////////
-// TODO: Commenting
-
-////////////// OPTIMISATIONS ///////////////
-// TODO: Fix Metadata
-// TODO: More Modualar, use variables
-
-////////////// OTHER OPTIONAL ///////////////
-// TODO: Parse markdown in excerpt
-// TODO: RSS Feeds
-// TODO: WorkEx Page?
-// TODO: AnimeJS
-
 function lstags(tagstring) {
   const l = tagstring.split(" ").map(tag => (
     <div>
@@ -37,43 +17,39 @@ function lstags(tagstring) {
 
 export default props => {
   const data = props.data
-  // console.log(props)
   const { pageContext } = props
   const { previousPagePath, nextPagePath } = pageContext
   return (
-    <div className="flex flex-col items-center justify-between h-screen">
+    <div className="flex flex-col h-screen bg-blue-100 md:mx-64 mx-8">
       <Metadata
         isBlogPost={false}
         title="The Blog of Nair"
         description="Collection of my works. All opinions my own"
       />
-
       <Header />
-      <h1>Blog Header</h1>
+
+      <h1 className="md:text-5xl text-lg">My own words and stuff</h1>
       <aside>My opinions are my own and shit</aside>
-      <div className="">
-        <ol>
-          {data.allMarkdownRemark.edges.map(({ node }, index) => (
-            <li>
-              <Link to={node.fields.slug}>
-                <h2>{node.frontmatter.title}</h2>
-              </Link>
-              <details>
-                <time>{node.frontmatter.date}</time>
-                {lstags(node.frontmatter.tags)}
-                <div>{node.timeToRead} min read</div>
-              </details>
-              <summary>{node.frontmatter.excerpt}</summary>
-            </li>
-          ))}
-        </ol>
-        <div>
-          {previousPagePath ? (
-            <Link to={previousPagePath}>Previous</Link>
-          ) : null}
-          {nextPagePath ? <Link to={nextPagePath}>Next</Link> : null}
-        </div>
+      <ol>
+        {data.allMarkdownRemark.edges.map(({ node }, index) => (
+          <li>
+            <Link to={node.fields.slug}>
+              <h2>{node.frontmatter.title}</h2>
+            </Link>
+            <details>
+              <time>{node.frontmatter.date}</time>
+              {lstags(node.frontmatter.tags)}
+              <div>{node.timeToRead} min read</div>
+            </details>
+            <summary>{node.frontmatter.excerpt}</summary>
+          </li>
+        ))}
+      </ol>
+      <div>
+        {previousPagePath ? <Link to={previousPagePath}>Previous</Link> : null}
+        {nextPagePath ? <Link to={nextPagePath}>Next</Link> : null}
       </div>
+
       <Footer />
     </div>
   )
