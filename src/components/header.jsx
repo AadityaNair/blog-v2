@@ -8,8 +8,12 @@ export default props => (
       <Link to="/">Aaditya M Nair</Link>
     </h1>
     <div className="flex flex-row space-x-6 pt-3">
-      <Link to="/about">about</Link>
-      <Link to="/blog">blog</Link>
+      <Link to="/about" activeClassName="italic">
+        about
+      </Link>
+      <Link to="/blog" activeClassName="italic">
+        blog
+      </Link>
     </div>
   </header>
 )
