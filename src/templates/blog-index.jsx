@@ -1,14 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Link } from "gatsby"
 import Footer from "../components/footer"
 import Header from "../components/header"
 import Metadata from "../components/meta"
 import BlogHeader from "../components/blogheader"
+import IndexNavigation from "../components/indexnavigation"
 import "../styles/mystyle.css"
-
-import leftarrow from "../assets/left.svg"
-import rightarrow from "../assets/right.svg"
 
 export default props => {
   const data = props.data
@@ -40,7 +37,7 @@ export default props => {
         ))}
       </ol>
 
-      <div className="justify-center flex space-x-8">
+      {/* <div className="justify-center flex space-x-8">
         {previousPagePath ? (
           <Link className="flex flex-row" to={previousPagePath}>
             <img alt="Newer" src={leftarrow} /> <div>Newer</div>
@@ -59,7 +56,8 @@ export default props => {
             <div>Older </div> <img alt="Older" src={rightarrow} />{" "}
           </div>
         )}
-      </div>
+      </div> */}
+      <IndexNavigation prev={previousPagePath} next={nextPagePath} />
 
       <Footer />
     </div>
