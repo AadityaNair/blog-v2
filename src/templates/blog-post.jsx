@@ -1,21 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Link } from "gatsby"
 import Footer from "../components/footer"
 import Header from "../components/header"
 import Metadata from "../components/meta"
 import BlogHeader from "../components/blogheader"
 
 import "../styles/mystyle.css"
-
-function lstags(tagstring) {
-  const l = tagstring.map(tag => (
-    <div>
-      <Link to={"/tags#" + tag}>{tag}</Link>
-    </div>
-  ))
-  return l
-}
 
 export default ({ data }) => {
   const post = data.markdownRemark
