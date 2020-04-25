@@ -8,6 +8,7 @@ import "../styles/mystyle.css"
 import linkedin from "../assets/linkedin.svg"
 import github from "../assets/github.svg"
 import email from "../assets/email.svg"
+import resume from "../assets/cv.svg"
 
 export default ({ data }) => (
   <div className="flex flex-col items-center justify-center h-screen ">
@@ -49,6 +50,9 @@ export default ({ data }) => (
       </a>
       <a href="mailto:me@aadityanair.ml">
         <img alt="email" src={email} />
+      </a>
+      <a href="/CV.pdf">
+        <img alt="resume" src={resume} />
       </a>
     </nav>
   </div>
