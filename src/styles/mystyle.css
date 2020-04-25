@@ -2,4 +2,7 @@
 
 @import "tailwindcss/components";
 
+#markdown h2 {
+  @apply text-xl;
+}
 @import "tailwindcss/utilities";
