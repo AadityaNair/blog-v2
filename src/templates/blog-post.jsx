@@ -7,7 +7,6 @@ import Metadata from "../components/meta"
 import BlogHeader from "../components/blogheader"
 
 import "../styles/mystyle.css"
-import { ProgressPlugin } from "webpack"
 
 function lstags(tagstring) {
   const l = tagstring.map(tag => (
