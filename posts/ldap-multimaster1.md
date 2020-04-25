@@ -1,7 +1,6 @@
 ---
-layout: post
 title: HA Directory Server setup (Part - I)
-tags: ldap linux
+tags: ["ldap", "linux"]
 date: 2017-06-17
 excerpt: |
     Moving to a more reliable setup with multiple servers.

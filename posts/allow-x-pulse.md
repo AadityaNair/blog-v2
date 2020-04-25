@@ -1,8 +1,7 @@
 ---
-layout: post
 title: Pulse and X for someone else.
 excerpt: Allow GUI and Sound for separate user.
-tags: snippets
+tags: ["snippets"]
 comments: true
 date: 2017-11-27
 ---

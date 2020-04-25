@@ -1,8 +1,7 @@
 ---
-layout: post
 title: List all commands in any man section
 excerpt: A fun way to discover new commands
-tags: snippets linux
+tags: ["snippets", "linux"]
 comments: true
 date: 2016-08-21
 ---

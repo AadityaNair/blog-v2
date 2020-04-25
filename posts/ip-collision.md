@@ -1,8 +1,7 @@
 ---
-layout: post
 title: A tale of two IPs
 excerpt: How I debugged a bad internet connection.
-tags: networks
+tags: ["networks"]
 comments: true
 date: 2018-04-03
 ---

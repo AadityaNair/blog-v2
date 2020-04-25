@@ -1,8 +1,7 @@
 ---
-layout: post
 title: Setup Github Pages with custom domain and Cloudflare
 excerpt: Default is good but having your own domain is better.
-tags: web
+tags: ["web"]
 comments: true
 date: 2017-06-01
 ---
