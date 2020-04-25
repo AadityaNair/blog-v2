@@ -4,19 +4,11 @@ import { Link } from "gatsby"
 import Footer from "../components/footer"
 import Header from "../components/header"
 import Metadata from "../components/meta"
+import BlogHeader from "../components/blogheader"
 import "../styles/mystyle.css"
 
 import leftarrow from "../assets/left.svg"
 import rightarrow from "../assets/right.svg"
-
-function lstags(tagstring) {
-  const l = tagstring.split(" ").map(tag => (
-    <div>
-      <Link to={"/tags#" + tag}>{tag}</Link>
-    </div>
-  ))
-  return l
-}
 
 export default props => {
   const data = props.data
@@ -36,36 +28,37 @@ export default props => {
       <ol className="list-none">
         {data.allMarkdownRemark.edges.map(({ node }, index) => (
           <li className="p-3">
-            <Link to={node.fields.slug}>
-              <h2 className="text-xl font-black">{node.frontmatter.title}</h2>
-            </Link>
-            <div className="flex text-xs md:text-base">
-              <div className="border-solid border-r-1 border-l-2 pr-4 pl-2 ">
-                Published{" "}
-                <time className="italic">{node.frontmatter.date}</time>{" "}
-              </div>
-              <div className="flex flex-row border-solid border-r-1 border-l-2 pl-2 pr-4 space-x-1">
-                {lstags(node.frontmatter.tags)}
-              </div>
-              <div className="border-solid border-l-2 pl-2">
-                {node.timeToRead} min read
-              </div>
-            </div>
+            <BlogHeader
+              slug={node.fields.slug}
+              title={node.frontmatter.title}
+              date={node.frontmatter.date}
+              tags={node.frontmatter.tags}
+              timeToRead={node.timeToRead}
+            />
             <summary>{node.frontmatter.excerpt}</summary>
           </li>
         ))}
       </ol>
+
       <div className="justify-center flex space-x-8">
         {previousPagePath ? (
           <Link className="flex flex-row" to={previousPagePath}>
-            <img alt="Previous" src={leftarrow} /> <div>Previous</div>
+            <img alt="Newer" src={leftarrow} /> <div>Newer</div>
           </Link>
-        ) : null}
+        ) : (
+          <div className="flex flex-row hidden">
+            <img alt="Newer" src={leftarrow} /> <div>Newer</div>{" "}
+          </div>
+        )}
         {nextPagePath ? (
           <Link className="flex flex-row" to={nextPagePath}>
-            <div>Next</div> <img alt="Next" src={rightarrow} />
+            <div>Older </div> <img alt="Older" src={rightarrow} />
           </Link>
-        ) : null}
+        ) : (
+          <div className="flex flex-row hidden">
+            <div>Older </div> <img alt="Older" src={rightarrow} />{" "}
+          </div>
+        )}
       </div>
 
       <Footer />
