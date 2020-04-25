@@ -51,7 +51,7 @@ export default ({ data }) => (
       <a href="mailto:me@aadityanair.ml">
         <img alt="email" src={email} />
       </a>
-      <a href="/CV.pdf">
+      <a target="_blank" href="/CV.pdf">
         <img alt="resume" src={resume} />
       </a>
     </nav>
