@@ -2,10 +2,15 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
 
+import Footer from "../components/footer"
+import Metadata from "../components/meta"
+
 //TODO: This can probably look better
 export default ({ data }) => (
-  <div>
-    <ol>
+  <div className="flex flex-col items-center justify-between h-screen ">
+    <Metadata isBlogPost={false} title="Tag Index" description={null} />
+
+    <ol className="flex flex-col m-auto">
       {data.allMarkdownRemark.group.map((tagitem, index) => (
         <li>
           {tagitem.tag}
@@ -19,6 +24,8 @@ export default ({ data }) => (
         </li>
       ))}
     </ol>
+
+    <Footer />
   </div>
 )
 
