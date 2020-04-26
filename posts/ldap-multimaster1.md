@@ -36,22 +36,22 @@ Updates on the _master_ are synced with the _slave_.
 In a _multi-master_ setting, all the involved directories are able to perform reads as well as writes. Hence any updates on one of them
 will be reflected on the other.
 
-To move forward, you will need to be aware of the following terms. This is taken from [RedHat Documentation]:
+To move forward, you will need to be aware of the following terms. This is taken from [RedHat Documentation]:  
 **Smallest Replication Unit:** A database is the smallest unit of replication. That means only a part of the database
-cant be replicated.
+cant be replicated.  
 **Replicas:** A replica is a database that takes part in replication process.
 
 Our directory only has a single suffix. Hence a replica can be assumed to be the directory itself and the replication unit is the suffix.
 
 **Suppliers and Consumers:** A supplier is the server that holds the replica that is copied to the replica in a different server.
 This different server is then called the consumer. In a master-slave setting, the master is the supplier while slave is the consumer.
-In our case, the multimaster setup, both the servers are suppliers as well as consumers.
+In our case, the multimaster setup, both the servers are suppliers as well as consumers.  
 **Changelog:** The changelog is the record of all the modifications that happen in the server. The directory uses changelogs to synchronize
-the data betwen servers. It is disabled by default.
+the data betwen servers. It is disabled by default.  
 **Replication Manager:** The replication manager is a special entry in the directory with access directory data.
-The supplier binds to this entry in the consumer to send data to it. In our case, we will use the entry `cn=Directory Manager`
+The supplier binds to this entry in the consumer to send data to it. In our case, we will use the entry `cn=Directory Manager`  
 **Replication Agreement:** This finally defines the specifics of the replication; like the database to be replicated, the consumer
-server, connection security, etc. The agreement exists only between one consumer and one supplier.
+server, connection security, etc. The agreement exists only between one consumer and one supplier.  
 
 Alright, enough talk. Lets jump into the nuts and bolts.
 
