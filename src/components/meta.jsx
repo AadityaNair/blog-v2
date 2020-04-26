@@ -24,7 +24,6 @@ function Metadata(props) {
   if (props.isBlogPost) {
     blogdata = <BlogMetaData date="{props.date}" tags="{props.tags}" />
   }
-  console.log(props.isBlogPost)
   return (
     <Helmet defer={false} defaultTitle="The Blog of Nair">
       <html lang="en" />
