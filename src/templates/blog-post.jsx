@@ -33,6 +33,7 @@ export default ({ data }) => {
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </main>
       <hr className="mb-16" />
+      
       <Footer />
     </div>
   )
