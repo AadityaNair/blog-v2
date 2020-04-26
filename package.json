@@ -16,6 +16,7 @@
   "dependencies": {
     "gatsby": "^2.20.21",
     "gatsby-awesome-pagination": "^0.3.5",
+    "gatsby-cli": "^2.11.22",
     "gatsby-image": "^2.3.2",
     "gatsby-plugin-catch-links": "^2.2.1",
     "gatsby-plugin-manifest": "^2.3.5",
