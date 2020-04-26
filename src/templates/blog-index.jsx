@@ -28,9 +28,10 @@ export default props => {
             <BlogHeader
               slug={node.fields.slug}
               title={node.frontmatter.title}
-              date={node.frontmatter.date}
+              date={node.frontmatter.humanDate}
               tags={node.frontmatter.tags}
               timeToRead={node.timeToRead}
+              compDate={node.frontmatter.compDate}
             />
             <summary>{node.frontmatter.excerpt}</summary>
           </li>
@@ -59,7 +60,8 @@ export const query = graphql`
             title
             tags
             excerpt
-            date(formatString: "DD MMMM, YYYY")
+            humanDate: date(formatString: "DD MMMM, YYYY")
+            compDate: date
           }
           fields {
             slug

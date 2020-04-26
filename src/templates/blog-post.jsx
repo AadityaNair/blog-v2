@@ -15,7 +15,7 @@ export default ({ data }) => {
         isBlogPost={true}
         title={post.frontmatter.title}
         tags={post.frontmatter.tags}
-        date={post.frontmatter.date}
+        date={post.frontmatter.humanDate}
         description={post.frontmatter.excerpt}
       />
       <Header />
@@ -23,9 +23,10 @@ export default ({ data }) => {
       <BlogHeader
         slug={post.fields.slug}
         title={post.frontmatter.title}
-        date={post.frontmatter.date}
+        date={post.frontmatter.humanDate}
         tags={post.frontmatter.tags}
         timeToRead={post.timeToRead}
+        compDate={post.frontmatter.compDate}
       />
 
       <main id="markdown" className="mt-4 mb-16">
@@ -44,8 +45,9 @@ export const query = graphql`
       frontmatter {
         title
         tags
-        date(formatString: "DD MMMM, YYYY")
         excerpt
+        humanDate: date(formatString: "DD MMMM, YYYY")
+        compDate: date
       }
       timeToRead
       fields {
