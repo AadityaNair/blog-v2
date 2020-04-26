@@ -45,7 +45,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: "language-",
+              classPrefix: "prismjs-language-",
               inlineCodeMarker: null,
               aliases: { sh: "bash" },
               showLineNumbers: false,
@@ -82,6 +82,15 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         exclude: [`/tags`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        tailwind: true,
+        ignore: ["prismjs/"], // Ignore prismjs CSS files
+        // Below also worked to ignore prismjs and resulted in saving 1.1KB but inline code would be unstyled
+        // whitelistPatternsChildren: [/^token/, /^pre/, /^code/],
       },
     },
   ],
