@@ -43,6 +43,10 @@ module.exports = {
         plugins: [
           { resolve: `gatsby-remark-images` },
           {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: { icon: false },
+          },
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               classPrefix: "prismjs-language-",
