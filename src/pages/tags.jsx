@@ -7,16 +7,18 @@ import Metadata from "../components/meta"
 
 //TODO: This can probably look better
 export default ({ data }) => (
-  <div className="flex flex-col items-center justify-between h-screen ">
+  <div className="flex flex-col h-screen md:mx-64 mx-8 mt-16">
     <Metadata isBlogPost={false} title="Tag Index" description={null} />
 
-    <ol className="flex flex-col m-auto">
+    <h1 className="text-3xl mb-4">All Posts by Tags</h1>
+
+    <ol className="flex flex-col">
       {data.allMarkdownRemark.group.map((tagitem, index) => (
-        <li>
+        <li className="font-bold uppercase mb-4">
           {tagitem.tag}
-          <ul>
+          <ul className="ml-4 border-solid border-gray-900 border-l-2 pl-2">
             {tagitem.nodes.map((post, index2) => (
-              <li>
+              <li className="normal-case font-normal">
                 <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
               </li>
             ))}
