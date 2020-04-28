@@ -15,7 +15,7 @@ export default ({ data }) => {
         isBlogPost={true}
         title={post.frontmatter.title}
         tags={post.frontmatter.tags}
-        date={post.frontmatter.humanDate}
+        date={post.frontmatter.compDate}
         description={post.frontmatter.excerpt}
       />
       <Header />
@@ -33,7 +33,7 @@ export default ({ data }) => {
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </main>
       <hr className="mb-16" />
-      
+
       <Footer />
     </div>
   )

@@ -1,29 +1,9 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { Helmet } from "react-helmet"
 
-// TODO: Fix this function not rendering
-// I am pretty sure that Helmet doesn't support "most of og:*" properties
-// Or, it doesn't support components within components. Idk.
-// Investigate whenever possible.
 // Also lookup, https://developers.google.com/search/docs/guides/intro-structured-data
-function BlogMetaData(props) {
-  const tagstring = props.tags
-  return (
-    <Fragment>
-      {/* TODO: Fix the time received */}
-      <meta property="og:article:published_time" content={props.date} />
-      <meta property="og:article:author" content="Aaditya M Nair" />
-      <meta property="og:article:tag" content={tagstring} />
-      <meta property="tags" content={tagstring} />
-    </Fragment>
-  )
-}
 
 function Metadata(props) {
-  var blogdata = null
-  if (props.isBlogPost) {
-    blogdata = <BlogMetaData date="{props.date}" tags="{props.tags}" />
-  }
   return (
     <Helmet defer={false} defaultTitle="The Blog of Nair">
       <html lang="en" />
@@ -37,7 +17,21 @@ function Metadata(props) {
       <meta property="og:image" content="" />
       <meta property="og:description" content={props.description} />
       <meta property="og:title" content={props.title} />
-      {blogdata}
+      {props.isBlogPost ? null : <meta property="og:type" content="website" />}
+
+      {/* All this could have looked nicer but that wasn't working properly. Look at previous commits */}
+      {props.isBlogPost ? <meta property="og:type" content="article" /> : null}
+      {props.isBlogPost ? (
+        <meta property="article:author" content="Aaditya M Nair" />
+      ) : null}
+      {props.isBlogPost ? (
+        <meta property="article:published_time" content={props.date} />
+      ) : null}
+      {props.isBlogPost
+        ? props.tags.map((tagitem, index) => (
+            <meta property="tags" content={tagitem} />
+          ))
+        : null}
     </Helmet>
   )
 }
