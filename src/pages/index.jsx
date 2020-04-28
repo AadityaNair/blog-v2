@@ -67,7 +67,7 @@ export const query = graphql`
     }
     myphoto: file(relativePath: { eq: "me.jpg" }) {
       childImageSharp {
-        fixed(height: 125, width: 125) {
+        fixed(height: 150, width: 150) {
           ...GatsbyImageSharpFixed_tracedSVG
         }
       }
