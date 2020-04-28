@@ -35,4 +35,13 @@
   @apply border-solid border-l-2 pl-2 border-gray-900;
   @apply italic;
 }
+
+#markdown ul {
+  @apply list-disc list-inside;
+}
+
+#markdown ol {
+  @apply list-decimal list-inside;
+}
+
 @import "tailwindcss/utilities";
