@@ -3,8 +3,8 @@ title: HA Directory Server setup (Part -II)
 tags: ["ldap", "linux"]
 date: 2017-06-22
 excerpt: |
-    Moving to a more reliable setup with multiple servers.
-    In this final part, we describe how we configure _failover_.
+  Moving to a more reliable setup with multiple servers.
+  In this final part, we describe how we configure _failover_.
 ---
 
 In the pervious [post], we configured the servers in multimaster mode. This assures us that both
@@ -17,6 +17,7 @@ servers fail for any reason, this IP will be taken over by the other server. Thi
 see a server fail except for the minor delay during IP switch.
 
 ### Pacemaker, Corosync and High-Availability
+
 Currently, pacemaker/corosync combo is the go to solution for HA. It is simple enough for small setups while being
 felexible enough for larger ones. In addition to great doumentation they also have a [nice tutorial] for beginners.
 We will be using them for our setup.
@@ -25,13 +26,16 @@ Before you proceed, please read a bit about pacemaker architecture and what vari
 You will need those.
 
 ## Pre-Requisites
+
 Setup **hostnames** for other servers. In each of the servers edit the `/etc/hosts` file and add the IPs and hostnames for
 both self and the other server. This allows us to refer each server by a hostname and not by their IP.
+
 ```shell-session
 $ cat /etc/hosts
 192.168.122.10 ldap1
 192.168.122.20 ldap2
 ```
+
 Let the shared IP be `10.1.36.79`
 
 Hosts must now be allowed to **SSH into each other**. Not particularly necessary, just nice to have. It will make it
@@ -50,8 +54,10 @@ For most of our operation, we would like for a failed server to join the cluster
 On a systemd machine, you would accomplish this by a `systemctl enable pcsd.service` from the root shell.
 
 ## Create the Cluster
+
 To create the cluster we need the nodes to be authenticated for use by pacemaker before creating the actual cluster.
 Pacemaker logs in by the `hacluster` user.
+
 ```shell-session
 ldap1 $ pcs cluster auth ldap1 ldap2 -u hacluster -p password # Auth
 
@@ -64,6 +70,7 @@ All of these commands should end wihout errors. Also note that all of pacemaker 
 It would make no difference.
 
 If everything went well, the cluster status should be similar to this:
+
 ```shell-session
 ldap1 $ pcs status
 Cluster name: ldap_cluster
@@ -85,57 +92,72 @@ Daemon Status:
 ```
 
 Since we are only a two-node cluster, we need to set some special properties.
-* STONITH (Shoot The Other Node In The Head) ensures that a malfunctioning node doesn't corrupt the entire data. As the name
-hints, it does so by powering off the other node. Since one node is always on standby and doesn't work on data, we could disable
-_stonith_ by `pcs property set stonith-enabled=false`
 
-* When a network issue splits a cluster into two connected components, a _quorum_ is used to resolve as to which part will be the
-master and which slave. By definition, quorum works with 3 or more nodes in cluster. Hence we disable doing anything when there is
-no quorum by `pcs property set no-quorum-policy=ignore`. Find a bit more information [here].
+- STONITH (Shoot The Other Node In The Head) ensures that a malfunctioning node doesn't corrupt the entire data. As the name
+  hints, it does so by powering off the other node. Since one node is always on standby and doesn't work on data, we could disable
+  _stonith_ by `pcs property set stonith-enabled=false`
+
+- When a network issue splits a cluster into two connected components, a _quorum_ is used to resolve as to which part will be the
+  master and which slave. By definition, quorum works with 3 or more nodes in cluster. Hence we disable doing anything when there is
+  no quorum by `pcs property set no-quorum-policy=ignore`. Find a bit more information [here].
 
 ## Resources.
+
 Read [this] to know a bit more about resources and resource agents. To put simply, a resource is anything managed by the cluster.
 We will configure resources to switch IPs on failure and to stop and start 389-ds before and after the switch respectively.
 
 ### IP failover
+
 Whenever a server goes down we need to make sure the other system gets the shared IP. Luckily, we have a default resource available to
 accomplish this.
+
 ```shell-session
 $ pcs resource create ldap_ip ocf:heartbeat:IPaddr2 ip=10.1.36.79 cidr_netmask=32 op monitor interval=10s
 ```
+
 That's it. The IP will be moved whenever the current holder goes down. The resource monitors status every 10 sec as defined by the
 `interval` option.
+
 ### Directory start/stop
+
 The above operation should have been enough. But I had observed some random inconsistencies pop up after an IP switch. So I wanted that
 the directory be stopped before the IP switch and started after. Sadly, we don't have resources available for that by default. Hence
 I cooked up [two simple resources], one that stopped the directory and one that started it. Copy these to `/usr/lib/ocf/resource.d/nair`
 on both servers. Now create the resources:
+
 ```shell-session
 $ pcs resource create start_ldap ocf:nair:dirsrv_start
 $ pcs resource create stop_ldap ocf:nair:dirsrv_stop
 ```
 
 ## Constraints
+
 Just creating a resource is not enough. We also have to make sure that these resources run in the right place and in the right order. For example,
 `dirsrv_stop` should never run after `dirsrv_start`. To accomplish this, pacemaker defines constraints.
-* **Collocation constraints** are used to define where a resource will run with what priority. We use them to make sure that the directory
-restart is attempted only where the shared IP is now. No point in doing so on the other server.
+
+- **Collocation constraints** are used to define where a resource will run with what priority. We use them to make sure that the directory
+  restart is attempted only where the shared IP is now. No point in doing so on the other server.
+
 ```shell-session
 $ pcs constraint colocation add stop_ldap with ldap_ip INFINITY
 $ pcs constraint colocation add start_ldap with ldap_ip INFINITY
 ```
-  The command is pretty self-explanatory. But make sure that the order of resource names in the above command is important. To have `stop_ldap`
-  with `ldap_ip`, we need to know where `ldap_ip` is going to be beforehand, which is how things should be and not the other way round.
 
-* We use **Order Constraints** to impose an ordering on resources' start and stop actions.
-We need to make sure that `stop_ldap` happens before `ldap_ip` which itself happens before `start_ldap`.
+The command is pretty self-explanatory. But make sure that the order of resource names in the above command is important. To have `stop_ldap`
+with `ldap_ip`, we need to know where `ldap_ip` is going to be beforehand, which is how things should be and not the other way round.
+
+- We use **Order Constraints** to impose an ordering on resources' start and stop actions.
+  We need to make sure that `stop_ldap` happens before `ldap_ip` which itself happens before `start_ldap`.
+
 ```shell-session
 $ pcs constraint order stop_ldap then ldap_ip
 $ pcs constraint order ldap_ip then start_ldap
 ```
+
 Again the commands are pretty self explanatory.
 
 Finally things should look like this.
+
 ```shell-session
 $  pcs constraint --full
 Location Constraints:
