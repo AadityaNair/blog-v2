@@ -14,7 +14,7 @@ function Metadata(props) {
 
       <meta name="description" content={props.description} />
 
-      <meta property="og:image" content="" />
+      <meta property="og:image" content="https://net.aadityanair.ml/icon.jpg" />
       <meta property="og:description" content={props.description} />
       <meta property="og:title" content={props.title} />
       {props.isBlogPost ? null : <meta property="og:type" content="website" />}
