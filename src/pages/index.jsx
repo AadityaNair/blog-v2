@@ -14,8 +14,8 @@ export default ({ data }) => (
   <div className="flex flex-col items-center justify-center h-screen ">
     <Metadata
       isBlogPost={false}
-      title="The website of Nair"
-      description="My experience as a Software Engineer"
+      title={data.site.siteMetadata.title}
+      description={data.site.siteMetadata.description} // Is there a better description possible?
     />
 
     <Img
@@ -25,13 +25,10 @@ export default ({ data }) => (
     />
 
     <h1 className="md:text-5xl text-lg ">
-      I'm{" "}
-      <strong className="" itemProp="name">
-        {data.site.siteMetadata.name}
-      </strong>
-      , a <em itemProp="jobTitle"> Software Engineer</em>.
+      I'm <strong>{data.site.siteMetadata.fullName}</strong>, a{" "}
+      <em> {data.site.siteMetadata.jobTitle}</em>.
     </h1>
-    <h3 className="md:text-3xl ">I love exploring how large systems work</h3>
+    <h3 className="md:text-3xl ">{data.site.siteMetadata.description}</h3>
 
     <nav className=" flex flex-row space-x-6 pt-6">
       <Link className="" to="/about">
@@ -42,13 +39,13 @@ export default ({ data }) => (
       </Link>
     </nav>
     <nav className="flex flex-row items-center justify-between space-x-2 pt-2">
-      <a href="https://www.linkedin.com/in/aadityanair/">
+      <a href={data.site.siteMetadata.social.linkedin}>
         <img alt="linkedin" src={linkedin} />
       </a>
-      <a href="https://github.com/AadityaNair">
+      <a href={data.site.siteMetadata.social.github}>
         <img alt="github" src={github} />
       </a>
-      <a href="mailto:me@aadityanair.ml">
+      <a href={data.site.siteMetadata.social.email}>
         <img alt="email" src={email} />
       </a>
       <a target="_blank" href="/CV.pdf">
@@ -62,7 +59,14 @@ export const query = graphql`
   query {
     site {
       siteMetadata {
-        name
+        fullName
+        jobTitle
+        description
+        social {
+          linkedin
+          github
+          email
+        }
       }
     }
     myphoto: file(relativePath: { eq: "me.jpg" }) {

@@ -7,10 +7,18 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: "Hi, I am Aaditya",
+    title: "Website of Nair",
     blogtitle: "The Blog of Nair",
-    name: "Aaditya M Nair",
-    siteUrl: `http://aadityanair.ml`,
+    fullName: "Aaditya M Nair",
+    siteUrl: `http://net.aadityanair.ml`,
+    description: "I love exploring how large systems work",
+    jobTitle: "Software Engineer",
+    social: {
+      linkedin: "https://www.linkedin.com/in/aadityanair/",
+      github: "https://github.com/AadityaNair",
+      email: "me@aadityanair.ml",
+    },
+    repo: "https://github.com/AadityaNair/blog-v2",
   },
   plugins: [
     {
@@ -88,6 +96,5 @@ module.exports = {
         exclude: [`/tags`],
       },
     },
-    
   ],
 }
