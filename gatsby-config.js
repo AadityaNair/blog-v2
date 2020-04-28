@@ -88,15 +88,6 @@ module.exports = {
         exclude: [`/tags`],
       },
     },
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        tailwind: true,
-        whitelistPatternsChildren: [/^blockquote/],
-        ignore: ["prismjs/"], // Ignore prismjs CSS files
-        // Below also worked to ignore prismjs and resulted in saving 1.1KB but inline code would be unstyled
-        // whitelistPatternsChildren: [/^token/, /^pre/, /^code/],
-      },
-    },
+    
   ],
 }
