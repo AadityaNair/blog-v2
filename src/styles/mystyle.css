@@ -4,44 +4,7 @@
 @import "tailwindcss/components";
 /* purgecss end ignore */
 
-#markdown h2 {
-  @apply text-2xl font-bold;
-  @apply mt-4;
-}
-
-#markdown a {
-  @apply text-blue-500;
-}
-
-#markdown p {
-  /* Spacing between */
-  @apply mt-1;
-}
-
-#markdown h3 {
-  /* Distinguish from normal text */
-  @apply text-xl font-semibold;
-  @apply mt-1;
-}
-
-#markdown pre {
-  /* Slight more padding than the rest of text */
-  @apply mx-8;
-}
-
-#markdown blockquote {
-  /* Can't distinguish */
-  @apply ml-1;
-  @apply border-solid border-l-2 pl-2 border-gray-900;
-  @apply italic;
-}
-
-#markdown ul {
-  @apply list-disc list-inside;
-}
-
-#markdown ol {
-  @apply list-decimal list-inside;
-}
-
 @import "tailwindcss/utilities";
+
+@import "./markdown.css";
+@import "./defaults.css";
