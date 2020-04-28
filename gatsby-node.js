@@ -1,3 +1,5 @@
+const posts_per_page = 3
+
 r = require("gatsby-awesome-pagination")
 paginate = r.paginate
 
@@ -56,8 +58,8 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage,
     items: result.data.allMarkdownRemark.edges,
     component: blogIndex,
-    itemsPerPage: 3,
-    itemsPerFirstPage: 3,
+    itemsPerPage: posts_per_page,
+    itemsPerFirstPage: posts_per_page,
     pathPrefix: "/blog",
   })
 }
