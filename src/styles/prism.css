@@ -1,0 +1,53 @@
+/* These CSS configs are copied from the documentation of gatsby-remark-prismjs
+   These can be left as is and will not need any manual editing in the future. Hopefully :-(
+
+   The first CSS block does, something.
+   The next two CSS blocks fix the case where long inline code doesn't wrap into the next line
+   and causes a horizontal scroll. Added with their original comments.
+
+   IMP: This currently does fuckall to help with the above problem. The classes below code targets
+        doesn't actually apply to inline code. 
+   */
+
+/* IDK, why I added the below. The documentation mentioned something like, "If you want to 
+   highlight lines of code, ....". Just check here if there is something suspect with highlighting.
+   
+   Also, this is very specific to solarized-light. Change to whatever theme you use later.
+*/
+.gatsby-highlight-code-line {
+  background-color: #feb;
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #f99;
+}
+
+/**
+ * Add back the container background-color, border-radius, padding, margin
+ * and overflow that we removed from <pre>.
+ */
+.gatsby-highlight {
+  background-color: #fdf6e3;
+  border-radius: 0.3em;
+  margin: 0.5em 0;
+  padding: 1em;
+  overflow: auto;
+}
+
+/**
+   * Remove the default PrismJS theme background-color, border-radius, margin,
+   * padding and overflow.
+   * 1. Make the element just wide enough to fit its content.
+   * 2. Always fill the visible space in .gatsby-highlight.
+   * 3. Adjust the position of the line numbers
+   */
+.gatsby-highlight pre[class*="language-"] {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  overflow: initial;
+  float: left; /* 1 */
+  min-width: 100%; /* 2 */
+}
