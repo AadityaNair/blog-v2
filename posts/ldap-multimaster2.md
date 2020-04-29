@@ -95,11 +95,11 @@ Since we are only a two-node cluster, we need to set some special properties.
 
 - STONITH (Shoot The Other Node In The Head) ensures that a malfunctioning node doesn't corrupt the entire data. As the name
   hints, it does so by powering off the other node. Since one node is always on standby and doesn't work on data, we could disable
-  _stonith_ by `pcs property set stonith-enabled=false`
+  _stonith_ by `bash^ pcs property set stonith-enabled=false`
 
 - When a network issue splits a cluster into two connected components, a _quorum_ is used to resolve as to which part will be the
   master and which slave. By definition, quorum works with 3 or more nodes in cluster. Hence we disable doing anything when there is
-  no quorum by `pcs property set no-quorum-policy=ignore`. Find a bit more information [here].
+  no quorum by `bash^ pcs property set no-quorum-policy=ignore`. Find a bit more information [here].
 
 ## Resources.
 
