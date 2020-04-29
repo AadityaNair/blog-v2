@@ -14,7 +14,7 @@ function IndexNavigation(props) {
           <LeftArrow alt="Newer" /> <div>Newer</div>
         </Link>
       ) : (
-        <div className="flex flex-row hidden">
+        <div className="flex flex-row text-gray-300">
           <LeftArrow alt="Newer" /> <div>Newer</div>{" "}
         </div>
       )}
@@ -23,7 +23,7 @@ function IndexNavigation(props) {
           <div>Older </div> <RightArrow alt="Older" />
         </Link>
       ) : (
-        <div className="flex flex-row hidden">
+        <div className="flex flex-row text-gray-300">
           <div>Older </div> <RightArrow alt="Older" />{" "}
         </div>
       )}
