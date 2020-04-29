@@ -5,10 +5,10 @@ import Img from "gatsby-image"
 import Metadata from "../components/meta"
 import "../styles/mystyle.css"
 
-import linkedin from "../assets/linkedin.svg"
-import github from "../assets/github.svg"
-import email from "../assets/email.svg"
-import resume from "../assets/cv.svg"
+import LinkedIn from "../assets/linkedin.svg"
+import Github from "../assets/github.svg"
+import Email from "../assets/email.svg"
+import Resume from "../assets/cv.svg"
 
 export default ({ data }) => (
   <div className="flex flex-col items-center justify-center h-screen ">
@@ -40,16 +40,16 @@ export default ({ data }) => (
     </nav>
     <nav className="flex flex-row items-center justify-between space-x-2 pt-2">
       <a href={data.site.siteMetadata.social.linkedin}>
-        <img alt="linkedin" src={linkedin} />
+        <LinkedIn alt="linkedin" />
       </a>
       <a href={data.site.siteMetadata.social.github}>
-        <img alt="github" src={github} />
+        <Github alt="github" />
       </a>
       <a href={data.site.siteMetadata.social.email}>
-        <img alt="email" src={email} />
+        <Email alt="email" />
       </a>
       <a target="_blank" href="/CV.pdf">
-        <img alt="resume" src={resume} />
+        <Resume alt="resume" />
       </a>
     </nav>
   </div>
