@@ -1,16 +1,16 @@
 /* These CSS configs are copied from the documentation of gatsby-remark-prismjs
    These can be left as is and will not need any manual editing in the future. Hopefully :-(
 
-   The first CSS block does, something.
-   The next two CSS blocks fix the case where long inline code doesn't wrap into the next line
-   and causes a horizontal scroll. Added with their original comments.
+   These codes help when you want to highlight a particular line in the code.
+   The two commented CSS blocks try to make sure that, when the highlighted line is large enough, 
+   it doesn't overflow out of the code section. It doesn't seem like that is necessary cause it works
+   without is as well. Keeping it there just in case.
 
-   IMP: This currently does fuckall to help with the above problem. The classes below code targets
-        doesn't actually apply to inline code. 
-   */
+   P.S. All of this code was pulled from the README of gatsby-remark-prismJS 
+*/
 
-/* IDK, why I added the below. The documentation mentioned something like, "If you want to 
-   highlight lines of code, ....". Just check here if there is something suspect with highlighting.
+/* The documentation mentioned something like, "If you want to highlight lines of code, ....". 
+   I suspect it adds the actual line highlighting.
    
    Also, this is very specific to solarized-light. Change to whatever theme you use later.
 */
@@ -28,13 +28,13 @@
  * Add back the container background-color, border-radius, padding, margin
  * and overflow that we removed from <pre>.
  */
-.gatsby-highlight {
+/* .gatsby-highlight {
   background-color: #fdf6e3;
   border-radius: 0.3em;
   margin: 0.5em 0;
   padding: 1em;
   overflow: auto;
-}
+} */
 
 /**
    * Remove the default PrismJS theme background-color, border-radius, margin,
@@ -43,11 +43,11 @@
    * 2. Always fill the visible space in .gatsby-highlight.
    * 3. Adjust the position of the line numbers
    */
-.gatsby-highlight pre[class*="language-"] {
+/* .gatsby-highlight pre[class*="language-"] {
   background-color: transparent;
   margin: 0;
   padding: 0;
   overflow: initial;
-  float: left; /* 1 */
-  min-width: 100%; /* 2 */
-}
+  float: left;
+  min-width: 100%;
+} */
