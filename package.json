@@ -42,7 +42,7 @@
     "webpack": "^4.42.1"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^2.0.5"
   },
   "repository": {
     "type": "git",
