@@ -38,3 +38,7 @@
 #markdown ol {
   @apply list-decimal list-inside;
 }
+
+#markdown code {
+  @apply whitespace-pre-wrap;
+}
