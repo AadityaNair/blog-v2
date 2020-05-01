@@ -41,4 +41,5 @@
 
 #markdown code {
   @apply whitespace-pre-wrap;
+  @apply font-mono;
 }

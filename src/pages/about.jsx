@@ -12,7 +12,7 @@ export default () => (
       description="What you need to know about me"
     />
     <Header />
-    <article className="md:mx-64 mx-8 text-justify">
+    <article className="md:mx-64 mx-8 text-justify font-website">
       But I must explain to you how all this mistaken idea of denouncing
       pleasure and praising pain was born and I will give you a complete account
       of the system, and expound the actual teachings of the great explorer of

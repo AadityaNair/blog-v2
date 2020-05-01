@@ -106,18 +106,10 @@ module.exports = {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Roboto Mono`,
-            variants: [`400`, `700`],
-          },
-          {
-            family: `Roboto`,
-            subsets: [`latin`],
-          },
-          {
-            family: `IBM Plex Mono`,
-            variants: [`400i`],
-          },
+          { family: `Cantarell` },
+          { family: `IBM Plex Mono` },
+          { family: `Montserrat` },
+          { family: `Source Code Pro` },
         ],
       },
     },

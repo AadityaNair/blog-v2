@@ -13,11 +13,11 @@ function lstags(tagstring) {
 export default (props) => (
   <Fragment>
     <Link to={props.slug}>
-      <h2 className="text-xl font-black">{props.title}</h2>
+      <h2 className="text-3xl font-black font-head">{props.title}</h2>
     </Link>
     <summary>
       {/* TODO: https://tailwindcss.com/docs/divide-width/ */}
-      <div className="flex text-xs md:text-base">
+      <div className="flex text-xs md:text-base font-subtext">
         <div className="border-solid border-r-1 border-l-2 pr-4 pl-2 ">
           Published{" "}
           <time className="italic" datetime={props.compDate}>

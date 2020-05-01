@@ -29,7 +29,7 @@ export default ({ data }) => {
         compDate={post.frontmatter.compDate}
       />
 
-      <main id="markdown" className="mt-4 mb-16">
+      <main id="markdown" className="mt-4 mb-16 font-text">
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </main>
       <hr className="mb-16" />

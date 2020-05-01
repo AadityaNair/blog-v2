@@ -7,7 +7,7 @@ import BlogHeader from "../components/blogheader"
 import IndexNavigation from "../components/indexnavigation"
 import "../styles/mystyle.css"
 
-export default props => {
+export default (props) => {
   const data = props.data
   const { pageContext } = props
   const { previousPagePath, nextPagePath } = pageContext
@@ -20,8 +20,12 @@ export default props => {
       />
       <Header />
 
-      <h1 className="md:text-4xl text-xl">My own words and stuff</h1>
-      <aside className="mb-8 text-sm">My opinions are my own and shit</aside>
+      <h1 className="md:text-4xl text-xl font-website">
+        My own words and stuff
+      </h1>
+      <aside className="mb-8 text-sm font-text">
+        My opinions are my own and shit
+      </aside>
       <ol className="list-none">
         {data.allMarkdownRemark.edges.map(({ node }, index) => (
           <li className="p-3">
@@ -33,7 +37,7 @@ export default props => {
               timeToRead={node.timeToRead}
               compDate={node.frontmatter.compDate}
             />
-            <summary>{node.frontmatter.excerpt}</summary>
+            <summary className="font-text">{node.frontmatter.excerpt}</summary>
           </li>
         ))}
       </ol>
