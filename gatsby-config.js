@@ -106,10 +106,12 @@ module.exports = {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
+          { family: `Alegreya Sans` },
           { family: `Cantarell` },
           { family: `IBM Plex Mono` },
-          { family: `Montserrat` },
+          { family: `Merriweather Sans` },
           { family: `Source Code Pro` },
+          { family: `Ubuntu`, variants: ["400", "400i"] },
         ],
       },
     },

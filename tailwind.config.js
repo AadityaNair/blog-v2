@@ -2,10 +2,10 @@ module.exports = {
   theme: {
     fontFamily: {
       cursive: ["IBM Plex Mono"],
-      website: ["Cantarell"],
+      website: ["Alegreya Sans", "sans-serif"],
 
-      head: ["Cantarell"],
-      text: ["Montserrat"],
+      head: ["Merriweather Sans", "serif"],
+      text: ["Ubuntu"],
       subtext: ["Cantarell"],
       mono: ["Source Code Pro"],
     },
