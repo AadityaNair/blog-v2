@@ -9,5 +9,16 @@ module.exports = {
       subtext: ["Cantarell"],
       mono: ["Source Code Pro"],
     },
+    extend: {
+      // TODO: Can remove the extend part at the end
+      colors: {
+        // niceblack: "#001011",
+        other: "#A8DADC",
+        // whiteish: "#FDFFFC",
+        text: "#FDFFFC",
+        highlight: "#e71d36",
+        background: "#000022",
+      },
+    },
   },
 }
