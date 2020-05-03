@@ -11,7 +11,7 @@ import Email from "../assets/email.svg"
 import Resume from "../assets/cv.svg"
 
 export default ({ data }) => (
-  <div className="flex flex-col items-center justify-center h-screen font-website ">
+  <div className="flex flex-col items-center justify-center h-screen font-website bg-background text-text">
     <Metadata
       isBlogPost={false}
       title={data.site.siteMetadata.title}
@@ -26,7 +26,7 @@ export default ({ data }) => (
 
     <h1 className="md:text-5xl text-lg ">
       I'm{" "}
-      <strong className="font-cursive italic">
+      <strong className="font-cursive italic text-highlight">
         {data.site.siteMetadata.fullName}
       </strong>
       , a <em> {data.site.siteMetadata.jobTitle}</em>.
