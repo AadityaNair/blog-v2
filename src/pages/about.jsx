@@ -5,7 +5,7 @@ import Metadata from "../components/meta"
 import "../styles/mystyle.css"
 
 export default () => (
-  <div className="flex flex-col items-center justify-between h-screen bg-background text-text">
+  <div className="flex flex-col items-center justify-between h-screen text-text">
     <Metadata
       isBlogPost={false}
       title="About Me"
