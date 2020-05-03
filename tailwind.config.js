@@ -11,13 +11,16 @@ module.exports = {
     },
     extend: {
       // TODO: Can remove the extend part at the end
+      // TODO: Maybe have a gradient for a few colours
       colors: {
-        // niceblack: "#001011",
-        other: "#A8DADC",
-        // whiteish: "#FDFFFC",
+        background: "#000022",
         text: "#FDFFFC",
         highlight: "#e71d36",
-        background: "#000022",
+
+        link: "#2EC4B6",
+        other: "#FF9F1C",
+        other2: "#85FFC7",
+        lines: "#f55d3e",
       },
     },
   },
