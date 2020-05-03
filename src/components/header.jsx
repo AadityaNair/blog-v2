@@ -5,7 +5,10 @@ import "../styles/mystyle.css"
 export default (props) => (
   <header className="items-center justify-center flex flex-col">
     <h1 className="md:text-5xl text-4xl">
-      <Link to="/" className="font-cursive font-extrabold italic">
+      <Link
+        to="/"
+        className="font-cursive font-extrabold italic text-highlight"
+      >
         Aaditya M Nair
       </Link>
     </h1>

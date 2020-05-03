@@ -7,7 +7,7 @@ import Metadata from "../components/meta"
 
 //TODO: This can probably look better
 export default ({ data }) => (
-  <div className="flex flex-col h-screen md:mx-64 mx-8 mt-16 font-website">
+  <div className="flex flex-col h-screen md:mx-64 mx-8 mt-16 font-website bg-background text-text">
     <Metadata isBlogPost={false} title="Tag Index" description={null} />
 
     <h1 className="text-3xl mb-4">All Posts by Tags</h1>

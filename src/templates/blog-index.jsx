@@ -12,7 +12,7 @@ export default (props) => {
   const { pageContext } = props
   const { previousPagePath, nextPagePath } = pageContext
   return (
-    <div className="flex flex-col h-screen md:mx-64 mx-8">
+    <div className="flex flex-col h-screen md:mx-64 mx-8 bg-background text-text">
       <Metadata
         isBlogPost={false}
         title="The Blog of Nair"

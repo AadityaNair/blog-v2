@@ -10,7 +10,7 @@ import "../styles/mystyle.css"
 export default ({ data }) => {
   const post = data.markdownRemark
   return (
-    <div className="flex flex-col h-screen md:mx-64 mx-8">
+    <div className="flex flex-col h-screen md:mx-64 mx-8 bg-background text-text">
       <Metadata
         isBlogPost={true}
         title={post.frontmatter.title}

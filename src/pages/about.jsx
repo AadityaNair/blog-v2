@@ -5,7 +5,7 @@ import Metadata from "../components/meta"
 import "../styles/mystyle.css"
 
 export default () => (
-  <div className="flex flex-col items-center justify-between h-screen ">
+  <div className="flex flex-col items-center justify-between h-screen bg-background text-text">
     <Metadata
       isBlogPost={false}
       title="About Me"
@@ -13,6 +13,7 @@ export default () => (
     />
     <Header />
     <article className="md:mx-64 mx-8 text-justify font-website">
+      <p>Under Construction</p>
       But I must explain to you how all this mistaken idea of denouncing
       pleasure and praising pain was born and I will give you a complete account
       of the system, and expound the actual teachings of the great explorer of
