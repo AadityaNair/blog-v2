@@ -42,16 +42,16 @@ export default ({ data }) => (
       </Link>
     </nav>
     <nav className="flex flex-row items-center justify-between space-x-2 pt-2">
-      <a href={data.site.siteMetadata.social.linkedin}>
+      <a href={data.site.siteMetadata.social.linkedin} aria-label="LinkedIn">
         <LinkedIn alt="linkedin" />
       </a>
-      <a href={data.site.siteMetadata.social.github}>
+      <a href={data.site.siteMetadata.social.github} aria-label="Github">
         <Github alt="github" />
       </a>
-      <a href={data.site.siteMetadata.social.email}>
+      <a href={data.site.siteMetadata.social.email} aria-label="EMail">
         <Email alt="email" />
       </a>
-      <a target="_blank" href="/CV.pdf">
+      <a target="_blank" href="/CV.pdf" aria-label="Resume">
         <Resume alt="resume" />
       </a>
     </nav>
