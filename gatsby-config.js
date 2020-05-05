@@ -154,6 +154,8 @@ prod_plugins = [
       exclude: [`/tags`],
     },
   },
+  { resolve: `gatsby-plugin-netlify` },
+  `gatsby-plugin-netlify-cache`,
 ]
 
 if (process.env.NODE_ENV == "production") {
