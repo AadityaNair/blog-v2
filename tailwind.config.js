@@ -1,4 +1,5 @@
 module.exports = {
+  purge: ["./src/**/*.jsx"],
   theme: {
     fontFamily: {
       cursive: ["IBM Plex Mono"],
