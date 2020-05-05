@@ -90,6 +90,7 @@ dev_plugins = [
       ],
     },
   },
+  `gatsby-plugin-preact`,
 ]
 
 prod_plugins = [
