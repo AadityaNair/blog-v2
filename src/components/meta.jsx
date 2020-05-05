@@ -10,6 +10,9 @@ function Metadata(props) {
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="author" content="Aaditya M Nair" />
+      {/* Colour the top bar and address bar on mobile */}
+      <meta name="theme-color" content="#000022" />
+      {/* TODO: Do this for iOS and windows as well */}
       <title>{props.title}</title>
 
       <meta name="description" content={props.description} />
