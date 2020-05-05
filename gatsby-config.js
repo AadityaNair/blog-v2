@@ -61,7 +61,7 @@ dev_plugins = [
           options: { icon: false },
         },
         {
-          resolve: "gatsby-remark-external-links",
+          resolve: "gatsby-remark-external-links", //TODO: Not working
           options: { target: "_blank" },
         },
         {
@@ -95,7 +95,16 @@ dev_plugins = [
       ],
     },
   },
-  `gatsby-plugin-preact`,
+  {
+    // TODO: Move to production later
+    resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+    options: {
+      // TODO: Has some option for trailing slashes. Check if it is important
+      // Also figure out why canonical URL is important and the cost of having it different from actual URL
+      siteUrl: metadata.siteUrl,
+    },
+  },
+  `gatsby-plugin-preact`, // TODO: Move to Production later
 ]
 
 prod_plugins = [
