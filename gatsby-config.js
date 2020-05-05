@@ -55,9 +55,14 @@ dev_plugins = [
       gfm: true,
       plugins: [
         { resolve: `gatsby-remark-images` },
+        { resolve: `gatsby-remark-responsive-iframe` },
         {
           resolve: `gatsby-remark-autolink-headers`,
           options: { icon: false },
+        },
+        {
+          resolve: "gatsby-remark-external-links",
+          options: { target: "_blank" },
         },
         {
           resolve: `gatsby-remark-prismjs`,
