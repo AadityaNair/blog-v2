@@ -14,7 +14,7 @@
 
 #markdown h3 {
   /* Distinguish from normal text */
-  @apply text-xl font-semibold;
+  @apply text-xl font-semibold italic;
   @apply mt-4;
 }
 
