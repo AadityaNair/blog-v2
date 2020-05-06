@@ -48,7 +48,10 @@ export default ({ data }) => (
       <a href={data.site.siteMetadata.social.github} aria-label="Github">
         <Github alt="github" />
       </a>
-      <a href={data.site.siteMetadata.social.email} aria-label="EMail">
+      <a
+        href={"mailto:" + data.site.siteMetadata.social.email}
+        aria-label="EMail"
+      >
         <Email alt="email" />
       </a>
       <a target="_blank" href="/CV.pdf" aria-label="Resume">
