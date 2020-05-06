@@ -40,6 +40,10 @@
 }
 
 #markdown code {
-  @apply whitespace-pre-wrap;
+  @apply whitespace-pre-wrap; /* This helps inline code to wrap around text and not have a horizontal scroll*/
   @apply font-mono;
+}
+
+#markdown pre code {
+  @apply whitespace-pre; /* But we don't want code blocks to do that. Hence restoring initial state for those */
 }
