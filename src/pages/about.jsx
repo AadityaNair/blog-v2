@@ -12,8 +12,8 @@ export default () => (
       description="What you need to know about me"
     />
     <Header />
-    <article className="md:mx-64 mx-8 text-justify font-website">
-      <section>
+    <article className="md:mx-64 mx-8 text-justify font-website space-y-2">
+      <section className="">
         Hi, I am{" "}
         <abbr
           title="No, it just turns red. No link here"

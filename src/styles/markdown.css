@@ -1,6 +1,6 @@
 #markdown h2 {
   @apply text-2xl font-bold;
-  @apply mt-4;
+  @apply mt-8;
 }
 
 #markdown a {
@@ -9,13 +9,13 @@
 
 #markdown p {
   /* Spacing between */
-  @apply mt-1;
+  @apply mt-2;
 }
 
 #markdown h3 {
   /* Distinguish from normal text */
   @apply text-xl font-semibold;
-  @apply mt-1;
+  @apply mt-4;
 }
 
 @screen md {
@@ -39,6 +39,9 @@
   @apply list-decimal list-inside;
 }
 
+#markdown li {
+  @apply mt-1;
+}
 #markdown code {
   @apply whitespace-pre-wrap; /* This helps inline code to wrap around text and not have a horizontal scroll*/
   @apply font-mono;
