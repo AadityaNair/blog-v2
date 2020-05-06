@@ -16,14 +16,14 @@ export default (props) => (
       <Link
         to="/about"
         activeClassName="italic"
-        className="capitalize font-website"
+        className="capitalize font-website text-other"
       >
         about
       </Link>
       <Link
         to="/blog"
         activeClassName="italic"
-        className="capitalize font-website"
+        className="capitalize font-website text-other"
       >
         blog
       </Link>

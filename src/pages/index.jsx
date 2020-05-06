@@ -33,7 +33,7 @@ export default ({ data }) => (
     </h1>
     <h3 className="md:text-3xl ">{data.site.siteMetadata.description}</h3>
 
-    <nav className=" flex flex-row space-x-6 pt-6">
+    <nav className=" flex flex-row space-x-6 pt-6 text-other">
       <Link to="/about">
         <button className="capitalize">about</button>
       </Link>
@@ -41,7 +41,7 @@ export default ({ data }) => (
         <button className="capitalize">blog</button>
       </Link>
     </nav>
-    <nav className="flex flex-row items-center justify-between space-x-2 pt-2">
+    <nav className="flex flex-row items-center justify-between space-x-2 pt-2 text-other2">
       <a href={data.site.siteMetadata.social.linkedin} aria-label="LinkedIn">
         <LinkedIn alt="linkedin" />
       </a>

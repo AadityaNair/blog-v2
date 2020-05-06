@@ -104,7 +104,6 @@ dev_plugins = [
       siteUrl: metadata.siteUrl,
     },
   },
-  `gatsby-plugin-preact`, // TODO: Move to Production later
 ]
 
 prod_plugins = [
@@ -165,6 +164,7 @@ prod_plugins = [
   },
   { resolve: `gatsby-plugin-netlify` },
   `gatsby-plugin-netlify-cache`,
+  `gatsby-plugin-preact`,
 ]
 
 if (process.env.NODE_ENV == "production") {

@@ -17,7 +17,7 @@ module.exports = {
         background: "#000022",
         text: "#FDFFFC",
         highlight: "#e71d36",
-
+        // Proerly decide scheme on below
         link: "#2EC4B6",
         other: "#FF9F1C",
         other2: "#85FFC7",
