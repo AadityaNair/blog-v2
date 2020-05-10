@@ -1,3 +1,4 @@
+// TODO: Better Naming of elements
 module.exports = {
   purge: ["./src/**/*.jsx"],
   theme: {
@@ -23,6 +24,13 @@ module.exports = {
         other2: "#85FFC7",
         lines: "#f55d3e",
       },
+
+      // fontSize: {
+      //   cont: "",
+      //   h1: "",
+      //   h2: "",
+      //   subt: "",
+      // },
     },
   },
 }
