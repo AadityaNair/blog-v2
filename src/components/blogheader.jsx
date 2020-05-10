@@ -13,7 +13,7 @@ function lstags(tagstring) {
 export default (props) => (
   <Fragment>
     <Link to={props.slug}>
-      <h2 className="text-3xl font-black font-head text-link">{props.title}</h2>
+      <h1 className="text-3xl font-black font-head text-link">{props.title}</h1>
     </Link>
     <summary>
       {/* TODO: https://tailwindcss.com/docs/divide-width/ */}

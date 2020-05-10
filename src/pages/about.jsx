@@ -12,7 +12,7 @@ export default () => (
       description="What you need to know about me"
     />
     <Header />
-    <article className="md:mx-64 mx-8 text-justify font-website space-y-2">
+    <article className="md:mx-64 mx-8 text-justify font-website space-y-2 text-xl">
       <section className="">
         Hi, I am{" "}
         <abbr

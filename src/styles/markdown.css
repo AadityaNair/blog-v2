@@ -7,7 +7,7 @@
 }
 
 #markdown h2 {
-  @apply text-2xl font-bold;
+  @apply text-3xl font-bold;
   @apply mt-8;
 }
 
@@ -22,7 +22,7 @@
 
 #markdown h3 {
   /* Distinguish from normal text */
-  @apply text-xl font-semibold italic;
+  @apply text-2xl font-semibold italic;
   @apply mt-4;
 }
 

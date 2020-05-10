@@ -20,10 +20,10 @@ export default (props) => {
       />
       <Header />
 
-      <h1 className="md:text-4xl text-xl font-website">
+      <h1 className="md:text-5xl text-xl font-website">
         My own words and stuff
       </h1>
-      <aside className="mb-8 text-sm font-text">
+      <aside className="mb-8 text-sm md:text-base font-text">
         My opinions are my own and shit
       </aside>
       <ol className="list-none">
@@ -37,7 +37,9 @@ export default (props) => {
               timeToRead={node.timeToRead}
               compDate={node.frontmatter.compDate}
             />
-            <summary className="font-text">{node.frontmatter.excerpt}</summary>
+            <summary className="font-text md:text-xl">
+              {node.frontmatter.excerpt}
+            </summary>
           </li>
         ))}
       </ol>
