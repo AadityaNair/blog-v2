@@ -12,7 +12,7 @@ export default (props) => (
         Aaditya M Nair
       </Link>
     </h1>
-    <div className="flex flex-row space-x-6 pt-3">
+    <div className="flex flex-row space-x-6 pt-3 md:text-2xl">
       <Link
         to="/about"
         activeClassName="italic"

@@ -33,7 +33,7 @@ export default ({ data }) => (
     </h1>
     <h3 className="md:text-3xl ">{data.site.siteMetadata.description}</h3>
 
-    <nav className=" flex flex-row space-x-6 pt-6 text-other">
+    <nav className=" flex flex-row space-x-6 pt-6 text-other md:text-2xl">
       <Link to="/about">
         <button className="capitalize">about</button>
       </Link>
