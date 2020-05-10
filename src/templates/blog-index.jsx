@@ -66,7 +66,7 @@ export const query = graphql`
             title
             tags
             excerpt
-            humanDate: date(formatString: "DD MMMM, YYYY")
+            humanDate: date(formatString: "DD MMM, YYYY")
             compDate: date
           }
           fields {
