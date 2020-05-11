@@ -11,26 +11,16 @@ module.exports = {
       subtext: ["Cantarell"],
       mono: ["Source Code Pro"],
     },
-    extend: {
-      // TODO: Can remove the extend part at the end
-      // TODO: Maybe have a gradient for a few colours
-      colors: {
-        background: "#000000",
-        text: "#FDFFFC",
-        highlight: "#e71d36",
-        // Proerly decide scheme on below
-        link: "#2EC4B6",
-        nav: "#e9c46a",
-        lines: "#f55d3e",
-        texthyperlink: "#3a86ff",
-      },
-
-      // fontSize: {
-      //   cont: "",
-      //   h1: "",
-      //   h2: "",
-      //   subt: "",
-      // },
+    // TODO: Maybe have a gradient for a few colours
+    colors: {
+      background: "#000000",
+      text: "#FDFFFC",
+      highlight: "#E71D36",
+      link: "#2EC4B6",
+      nav: "#E9C46A",
+      lines: "#F55D3E",
+      texthyperlink: "#3A86FF",
+      gray: "#AED9E0", // TODO: fix this extra colour. This was needed by blockquote in post. /list-all-commands
     },
   },
 }
