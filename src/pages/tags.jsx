@@ -16,9 +16,9 @@ export default ({ data }) => (
       {data.allMarkdownRemark.group.map((tagitem, index) => (
         <li className="font-bold uppercase mb-4 md: text-3xl">
           {tagitem.tag}
-          <ul className="ml-4 border-solid border-lines border-l-2 pl-2">
+          <ul className="ml-4">
             {tagitem.nodes.map((post, index2) => (
-              <li className="normal-case font-normal md:text-xl">
+              <li className="normal-case font-normal md:text-xl border-solid border-lines border-l-2 pl-2">
                 <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
               </li>
             ))}
