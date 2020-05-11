@@ -33,9 +33,9 @@
   }
 }
 #markdown blockquote {
-  /* Can't distinguish */
+  /* TODO: Cannot really be distinguished by the lines in blogheader */
   @apply ml-1;
-  @apply border-solid border-l-2 pl-2 border-gray-900;
+  @apply border-solid border-l-2 pl-2 border-gray;
   @apply italic;
 }
 
