@@ -2,19 +2,20 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
 
+import Header from "../components/header"
 import Footer from "../components/footer"
 import Metadata from "../components/meta"
 
 //TODO: This can probably look better
 export default ({ data }) => (
-  <div className="flex flex-col h-screen md:mx-64 mx-8 mt-16 font-website text-text">
+  <div className="flex flex-col h-screen md:mx-64 mx-8 font-website text-text">
     <Metadata isBlogPost={false} title="Tag Index" description={null} />
-
+    <Header />
     <h1 className="text-3xl md:text-5xl mb-4">All Posts by Tags</h1>
 
     <ol className="flex flex-col">
       {data.allMarkdownRemark.group.map((tagitem, index) => (
-        <li className="font-bold uppercase mb-4 md: text-3xl">
+        <li className="font-bold uppercase mb-4 md:text-3xl">
           {tagitem.tag}
           <ul className="ml-4">
             {tagitem.nodes.map((post, index2) => (
