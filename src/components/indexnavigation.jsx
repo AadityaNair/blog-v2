@@ -8,7 +8,7 @@ function IndexNavigation(props) {
   const previousPagePath = props.prev
   const nextPagePath = props.next
   return (
-    <div className="justify-center flex space-x-8 font-website text-other2">
+    <div className="justify-center flex space-x-8 font-website text-nav">
       {previousPagePath ? (
         <Link className="flex flex-row" to={previousPagePath}>
           <LeftArrow alt="Newer" /> <div>Newer</div>

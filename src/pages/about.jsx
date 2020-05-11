@@ -25,7 +25,10 @@ export default () => (
       </section>
       <section>
         I am currently working with{" "}
-        <a href="https://tower-research.com"> Tower Research Capital </a>
+        <a href="https://tower-research.com" className="text-texthyperlink">
+          {" "}
+          Tower Research Capital{" "}
+        </a>
         as a Software Engineer. Here, I work with the recently formed
         Information Security team. Me and my team are responsible for making and
         enforcing all policies related to security and compliance. We also
@@ -38,9 +41,15 @@ export default () => (
       <section>
         In College though, I was pursuing a Bachelors + Masters dual degree
         program in Computer Science at{" "}
-        <a href="https://iiit.ac.in">IIIT Hyderabad</a>. For my Master's Thesis
-        (for which I am required to publish a few papers), I worked with{" "}
-        <a href="https://faculty.iiit.ac.in/~lalitha.v/">
+        <a href="https://iiit.ac.in" className="text-texthyperlink">
+          IIIT Hyderabad
+        </a>
+        . For my Master's Thesis (for which I am required to publish a few
+        papers), I worked with{" "}
+        <a
+          href="https://faculty.iiit.ac.in/~lalitha.v/"
+          className="text-texthyperlink"
+        >
           Dr Lalitha Vadlamani
         </a>{" "}
         on Erasure Codes. More specifically, I worked on Codes with Hierarchical
