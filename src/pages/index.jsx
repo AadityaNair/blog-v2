@@ -65,6 +65,7 @@ export const query = graphql`
   query {
     site {
       siteMetadata {
+        title
         fullName
         jobTitle
         description
