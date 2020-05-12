@@ -21,10 +21,10 @@ export default (props) => {
       <Header />
 
       <h1 className="md:text-5xl text-xl font-website">
-        My own words and stuff
+        <code className="font-mono">rm -rf / </code> but with more steps
       </h1>
       <aside className="mb-8 text-sm md:text-base font-text">
-        My opinions are my own and shit
+        My opinions are my own.
       </aside>
       <ol className="list-none">
         {data.allMarkdownRemark.edges.map(({ node }, index) => (
