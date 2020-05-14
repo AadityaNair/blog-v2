@@ -1,0 +1,23 @@
+#comment {
+  @apply flex flex-col items-center mb-16;
+}
+
+#comment-button {
+  @apply justify-center;
+  @apply border border-text py-2 px-4;
+}
+
+/* Invert colours on hover */
+#comment-button:hover {
+  @apply border-background;
+  @apply text-background bg-text;
+}
+
+/* Below classes if we really want to widen the iframe or something
+   I don't see any other uses.
+*/
+/* .utterances {
+}
+
+.utterances-frame {
+} */
