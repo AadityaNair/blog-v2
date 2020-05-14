@@ -10,6 +10,7 @@ export default class Comments extends Component {
     script.setAttribute("repo", "AadityaNair/blog-v2")
     script.setAttribute("issue-term", "title")
     script.setAttribute("theme", "dark-blue")
+    script.setAttribute("label", "utterance")
     anchor.appendChild(script)
   }
 
