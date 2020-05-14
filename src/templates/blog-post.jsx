@@ -7,8 +7,8 @@ import BlogHeader from "../components/blogheader"
 
 import "../styles/mystyle.css"
 
-export default ({ data }) => {
-  const post = data.markdownRemark
+export default (props) => {
+  const post = props.data.markdownRemark
   return (
     <div className="flex flex-col h-screen md:mx-64 mx-8 text-text">
       <Metadata
