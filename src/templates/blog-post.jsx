@@ -4,6 +4,7 @@ import Footer from "../components/footer"
 import Header from "../components/header"
 import Metadata from "../components/meta"
 import BlogHeader from "../components/blogheader"
+import Comments from "../components/comments"
 
 import "../styles/mystyle.css"
 
@@ -34,6 +35,7 @@ export default (props) => {
       </main>
       <hr className="mb-16" />
 
+      <Comments />
       <Footer />
     </div>
   )
