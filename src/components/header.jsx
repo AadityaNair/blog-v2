@@ -24,6 +24,7 @@ export default (props) => (
         to="/blog"
         activeClassName="italic"
         className="capitalize font-website text-nav"
+        partiallyActive={true}
       >
         blog
       </Link>
