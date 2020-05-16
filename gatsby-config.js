@@ -8,13 +8,13 @@ metadata = {
   title: "Website of Nair",
   blogtitle: "The Blog of Nair",
   fullName: "Aaditya M Nair",
-  siteUrl: `http://net.aadityanair.ml`,
+  siteUrl: `https://amnair.dev`,
   description: "I love exploring how large systems work",
   jobTitle: "Software Engineer",
   social: {
     linkedin: "https://www.linkedin.com/in/aadityanair/",
     github: "https://github.com/AadityaNair",
-    email: "me@aadityanair.ml",
+    email: "me@amnair.dev",
   },
   repo: "https://github.com/AadityaNair/blog-v2",
 }
