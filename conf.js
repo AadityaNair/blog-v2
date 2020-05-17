@@ -30,14 +30,15 @@ const darkColours = {
 }
 
 const lightColours = {
-  background: "#000000",
-  text: "#FDFFFC",
-  highlight: "#E71D36",
-  link: "#2EC4B6",
-  nav: "#E9C46A",
-  lines: "#F55D3E",
+  background: "#FFFFFF",
+  text: "#000000",
+
+  highlight: "#E76f51",
+  link: "#264653",
+  nav: "#028090",
+  lines: "#E76F51",
   texthyperlink: "#3A86FF",
-  gray: "#AED9E0",
+  gray: "#33415C",
 }
 
 var currentTheme = lightColours
