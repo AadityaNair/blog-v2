@@ -42,12 +42,12 @@ const lightColours = {
 }
 
 var currentTheme = lightColours
-if (websiteTheme == "dark") {
+if (websiteTheme === "dark") {
   currentTheme = darkColours
 }
 
-const isProduction = process.env.NODE_ENV == "production"
-const isDevelopment = process.env.NODE_ENV == "developement"
+const isProduction = process.env.NODE_ENV === "production"
+const isDevelopment = process.env.NODE_ENV === "developement"
 const isNetlify = "NETLIFY" in process.env
 
 module.exports = {
