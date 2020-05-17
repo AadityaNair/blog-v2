@@ -1,4 +1,5 @@
 import React from "react"
+const config = require("../../conf")
 
 function loadComment(props) {
   let script = document.createElement("script")
@@ -8,8 +9,12 @@ function loadComment(props) {
   script.setAttribute("async", true)
   script.setAttribute("repo", "AadityaNair/blog-v2")
   script.setAttribute("issue-term", "title")
-  script.setAttribute("theme", "dark-blue")
   script.setAttribute("label", "utterance")
+  script.setAttribute("theme", "dark-blue")
+  if (config.websiteTheme === "light") {
+    script.setAttribute("theme", "github-light")
+    // TODO: Maybe move the theme value to conf.js
+  }
   anchor.appendChild(script)
 
   // TODO: Make this button a show/hide thing
