@@ -1,3 +1,5 @@
+// TODO: ** Document what each variable does in the system
+// TODO: Always validate if websiteTheme is either `dark` or `light`
 const websiteTheme = "dark"
 
 const metadata = {
