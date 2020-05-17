@@ -1,23 +1,6 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
+config = require("./conf")
 
-metadata = {
-  title: "Website of Nair",
-  blogtitle: "The Blog of Nair",
-  fullName: "Aaditya M Nair",
-  siteUrl: `https://amnair.dev`,
-  description: "I love exploring how large systems work",
-  jobTitle: "Software Engineer",
-  social: {
-    linkedin: "https://www.linkedin.com/in/aadityanair/",
-    github: "https://github.com/AadityaNair",
-    email: "me@amnair.dev",
-  },
-  repo: "https://github.com/AadityaNair/blog-v2",
-}
+metadata = config.metadata
 
 dev_plugins = [
   {
@@ -101,7 +84,7 @@ dev_plugins = [
     options: {
       // TODO: Has some option for trailing slashes. Check if it is important
       // Also figure out why canonical URL is important and the cost of having it different from actual URL
-      siteUrl: metadata.siteUrl,
+      siteUrl: config.metadata.siteUrl,
     },
   },
 ]
@@ -141,11 +124,11 @@ prod_plugins = [
   {
     resolve: `gatsby-plugin-manifest`, // Before Offline
     options: {
-      name: `The Blog of Nair`,
-      short_name: `NairBlog`,
+      name: config.metadata.title,
+      short_name: config.metadata.shortName,
       start_url: `/`,
-      background_color: `#000022`,
-      theme_color: `#E71D36`,
+      background_color: config.currentTheme["background"],
+      theme_color: config.currentTheme["highlight"],
       display: `standalone`,
       icon: `static/icon.svg`,
     },
@@ -175,6 +158,6 @@ if (process.env.NODE_ENV == "production") {
 
 module.exports = {
   /* Your site config here */
-  siteMetadata: metadata,
+  siteMetadata: config.metadata,
   plugins: final_plugins,
 }
