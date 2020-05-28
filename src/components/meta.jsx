@@ -2,6 +2,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 
 // Also lookup, https://developers.google.com/search/docs/guides/intro-structured-data
+// TODO: Replace amnair.dev with a variable
 
 function Metadata(props) {
   return (
@@ -17,7 +18,7 @@ function Metadata(props) {
 
       <meta name="description" content={props.description} />
 
-      <meta property="og:image" content="https://net.aadityanair.ml/icon.jpg" />
+      <meta property="og:image" content="https://amnair.dev/icon.jpg" />
       <meta property="og:description" content={props.description} />
       <meta property="og:title" content={props.title} />
       {props.isBlogPost ? null : <meta property="og:type" content="website" />}
