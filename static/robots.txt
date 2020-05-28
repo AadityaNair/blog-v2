@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: */tags/
+Disallow: /tags
 Allow: /
-sitemap: https://aadityanair.ml/sitemap.xml
+sitemap: https://amnair.dev/sitemap.xml
