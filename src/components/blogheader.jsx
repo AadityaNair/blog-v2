@@ -9,7 +9,7 @@ function lstags(tagstring) {
   ))
   return l
 }
-
+// TODO: Try StaticQuery here
 export default (props) => (
   <Fragment>
     <Link to={props.slug}>

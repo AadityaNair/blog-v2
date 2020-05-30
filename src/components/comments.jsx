@@ -1,6 +1,6 @@
 import React from "react"
 const config = require("../../conf")
-
+// TODO: Autoupdate comments
 function loadComment(props) {
   let script = document.createElement("script")
   let anchor = document.getElementById("comment")

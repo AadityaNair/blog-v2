@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Footer from "../components/footer"
 import Metadata from "../components/meta"
+// TODO: Integrate proper witcher 3 background
 
 export default () => (
   <div className="flex flex-col items-center justify-between h-screen text-text">

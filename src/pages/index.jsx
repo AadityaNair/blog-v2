@@ -9,6 +9,11 @@ import LinkedIn from "../assets/linkedin.svg"
 import Github from "../assets/github.svg"
 import Email from "../assets/email.svg"
 import Resume from "../assets/cv.svg"
+// TODO: LighthouseCI
+// TODO: Netlify Build Plugins
+// TODO: A bit of transition animations: animeJS, gatsby-transition-link
+// TODO: RSS Feeds
+// TODO: google analytics
 
 export default ({ data }) => (
   <div className="flex flex-col items-center justify-center h-screen font-website bg-background text-text">

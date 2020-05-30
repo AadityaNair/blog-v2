@@ -3,7 +3,8 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import Metadata from "../components/meta"
 import "../styles/mystyle.css"
-
+// TODO: Proper workex information
+// TODO: About Website page. with commit logs
 export default () => (
   <div className="flex flex-col items-center justify-between h-screen text-text">
     <Metadata

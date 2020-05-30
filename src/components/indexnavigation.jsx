@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-
+// TODO: Have these buttons in a fixed position
 import LeftArrow from "../assets/left.svg"
 import RightArrow from "../assets/right.svg"
 

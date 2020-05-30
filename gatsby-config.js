@@ -1,7 +1,8 @@
 config = require("./conf")
 
 metadata = config.metadata
-
+// TODO: Investigate all plugin features
+// TODO: MDX integration, remote graphql, latex, gatsby remark code titles
 dev_plugins = [
   {
     resolve: `gatsby-source-filesystem`,
@@ -66,6 +67,8 @@ dev_plugins = [
     },
   },
   {
+    // TODO: Performance: Reduce fonts download to the exact style(or even character) we need
+    // TODO Try using the NPM packages or webfont-loader whichever works
     resolve: `gatsby-plugin-prefetch-google-fonts`,
     options: {
       fonts: [
@@ -134,6 +137,7 @@ prod_plugins = [
     },
   },
   {
+    // TODO: Try looking at workbox config to prevent a critical chain performance issue
     resolve: `gatsby-plugin-offline`, // After Manifest
     options: {
       precachePages: [`/about`, `/blog/*`],
@@ -161,3 +165,21 @@ module.exports = {
   siteMetadata: config.metadata,
   plugins: final_plugins,
 }
+
+// TODO: gatsby-transformer-remark, pull excerpt from the frontmatter properly
+// Tried this, doesn't work
+// diff --git a/gatsby-config.js b/gatsby-config.js
+// index a9496b0..03649e1 100644
+// --- a/gatsby-config.js
+// +++ b/gatsby-config.js
+// @@ -36,6 +36,10 @@ module.exports = {
+//     {
+//     resolve: `gatsby-transformer-remark`,
+//     options: {
+// +        excerpt: function(file, options) {
+// +          file.excerpt = file.data.excerpt
+// +          return file.data.excerpt
+// +        },
+//         commonmark: true,
+//         footnotes: true,
+//         pedantic: true,

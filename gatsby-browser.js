@@ -8,3 +8,6 @@ require("prismjs/themes/prism-solarizedlight.css")
 // the if-else statement.
 // TODO: Switch themes from website itself
 // This might help: https://github.com/adamwathan/theming-tailwind-demo
+// Also a plugin gatsby-dark-mode
+
+// TODO: Try to deprecate this file

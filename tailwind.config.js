@@ -17,3 +17,5 @@ module.exports = {
     colors: config.currentTheme,
   },
 }
+
+// TODO: Try to deprecate this file

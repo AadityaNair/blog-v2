@@ -2,7 +2,8 @@ import React from "react"
 import { Helmet } from "react-helmet"
 
 // Also lookup, https://developers.google.com/search/docs/guides/intro-structured-data
-// TODO: Replace amnair.dev with a variable 
+// TODO: Replace amnair.dev with a variable
+// TODO: Try StaticQuery here
 
 function Metadata(props) {
   return (

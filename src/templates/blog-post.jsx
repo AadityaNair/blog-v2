@@ -5,7 +5,11 @@ import Header from "../components/header"
 import Metadata from "../components/meta"
 import BlogHeader from "../components/blogheader"
 import Comments from "../components/comments"
-
+// TODO: Move across posts. graphql has edges>next/previous. Integrate that
+// TODO: Move back from a post
+// TODO: Recommended Posts
+// TODO: Table of Contents
+// TODO: Use prismJS's highlight-line where possible
 import "../styles/mystyle.css"
 
 export default (props) => {
