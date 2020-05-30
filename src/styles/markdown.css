@@ -1,3 +1,11 @@
+/* TODO: Sort things more coherently 
+   TODO: Import all classes for #markdown to here. (from blog-post.jsx)
+*/
+
+#markdown {
+  @apply text-blogtext;
+}
+
 #markdown pre {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
@@ -7,7 +15,7 @@
 }
 
 #markdown h2 {
-  @apply text-3xl font-bold;
+  @apply text-3xl font-bold text-blogbold;
   @apply mt-8;
 }
 
@@ -22,7 +30,7 @@
 
 #markdown h3 {
   /* Distinguish from normal text */
-  @apply text-2xl font-semibold italic;
+  @apply text-2xl font-semibold italic text-blogbold;
   @apply mt-4;
 }
 
@@ -57,4 +65,8 @@
 
 #markdown pre code {
   @apply whitespace-pre; /* But we don't want code blocks to do that. Hence restoring initial state for those */
+}
+
+#markdown strong {
+  @apply text-blogbold;
 }

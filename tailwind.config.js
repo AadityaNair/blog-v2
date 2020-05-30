@@ -9,7 +9,7 @@ module.exports = {
       website: ["Alegreya Sans", "sans-serif"],
 
       head: ["Merriweather Sans", "serif"],
-      text: ["Ubuntu"],
+      text: ["Source Sans Pro", "sans-serif"],
       subtext: ["Cantarell"],
       mono: ["Source Code Pro"],
     },

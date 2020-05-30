@@ -34,6 +34,8 @@ const darkColours = {
 const lightColours = {
   background: "#FFFFFF",
   text: "#000000",
+  blogtext: "#515151",
+  blogbold: "#313131",
 
   highlight: "#E76f51",
   link: "#264653",

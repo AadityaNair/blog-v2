@@ -74,7 +74,7 @@ dev_plugins = [
         { family: `IBM Plex Mono` },
         { family: `Merriweather Sans` },
         { family: `Source Code Pro` },
-        { family: `Ubuntu`, variants: ["400", "400i"] },
+        { family: `Source Sans Pro`, variants: ["400", "400i"] },
       ],
     },
   },
