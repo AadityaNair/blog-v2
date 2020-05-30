@@ -6,7 +6,7 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import Metadata from "../components/meta"
 
-//TODO: This can probably look better
+// This can probably look better
 export default ({ data }) => (
   <div className="flex flex-col h-screen md:mx-64 mx-8 font-website text-text">
     <Metadata isBlogPost={false} title="Tag Index" description={null} />

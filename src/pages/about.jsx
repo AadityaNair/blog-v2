@@ -37,7 +37,6 @@ export default () => (
         promoting security by design on new projects. This is my first actual
         job post college :-).
       </section>
-      {/* TODO: Links to relevant pages */}
       <section>
         In College though, I was pursuing a Bachelors + Masters dual degree
         program in Computer Science at{" "}

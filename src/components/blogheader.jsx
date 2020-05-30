@@ -1,7 +1,6 @@
 import React, { Fragment } from "react"
 import { Link } from "gatsby"
 
-// TODO: Comma between tags
 function lstags(tagstring) {
   const l = tagstring.map((tag) => (
     <div>
