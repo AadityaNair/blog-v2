@@ -7,3 +7,4 @@ require("prismjs/themes/prism-solarizedlight.css")
 // That doesn't seem to work in a production build due to some react issue. So, might as well remove
 // the if-else statement.
 // TODO: Switch themes from website itself
+// This might help: https://github.com/adamwathan/theming-tailwind-demo
