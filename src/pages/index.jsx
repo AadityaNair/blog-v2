@@ -14,6 +14,8 @@ import Resume from "../assets/cv.svg"
 // TODO: A bit of transition animations: animeJS, gatsby-transition-link
 // TODO: RSS Feeds
 // TODO: google analytics
+// TODO: Colour Switching favicon
+// TODO: Use SVG favicon wherever possible, https://catalin.red/svg-favicon-light-dark-theme/
 
 export default ({ data }) => (
   <div className="flex flex-col items-center justify-center h-screen font-website bg-background text-text">

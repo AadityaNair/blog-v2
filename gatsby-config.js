@@ -3,6 +3,7 @@ config = require("./conf")
 metadata = config.metadata
 // TODO: Investigate all plugin features
 // TODO: MDX integration, remote graphql, latex, gatsby remark code titles
+// TODO: Content Security Policy features
 dev_plugins = [
   {
     resolve: `gatsby-source-filesystem`,
