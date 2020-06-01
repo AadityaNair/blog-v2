@@ -1,5 +1,4 @@
 [build]
-    base = "blog-v2/"
     command = "gatsby build"
     publish = "public/"
 
