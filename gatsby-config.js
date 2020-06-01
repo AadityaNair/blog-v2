@@ -24,7 +24,12 @@ dev_plugins = [
   `gatsby-transformer-sharp`,
   `gatsby-plugin-catch-links`,
   `gatsby-plugin-react-helmet`,
-  `gatsby-plugin-postcss`,
+  {
+    resolve: `gatsby-plugin-postcss`,
+    options: {
+      postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
+    },
+  },
   {
     resolve: `gatsby-plugin-react-svg`,
     options: {
