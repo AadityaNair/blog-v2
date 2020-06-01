@@ -1,8 +1,11 @@
 import React from "react"
-import Header from "../components/header"
+
 import Footer from "../components/footer"
+import Header from "../components/header"
 import Metadata from "../components/meta"
+
 import "../styles/mystyle.css"
+
 // TODO: Proper workex information
 // TODO: About Website page. with commit logs
 export default () => (

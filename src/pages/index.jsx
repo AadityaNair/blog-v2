@@ -1,14 +1,17 @@
 import React from "react"
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
+
 import Img from "gatsby-image"
 import Metadata from "../components/meta"
-import "../styles/mystyle.css"
 
 import LinkedIn from "../assets/linkedin.svg"
 import Github from "../assets/github.svg"
 import Email from "../assets/email.svg"
 import Resume from "../assets/cv.svg"
+
+import "../styles/mystyle.css"
+
 // TODO: LighthouseCI
 // TODO: Netlify Build Plugins
 // TODO: A bit of transition animations: animeJS, gatsby-transition-link

@@ -1,5 +1,7 @@
 import React from "react"
+
 const config = require("../../conf")
+
 // TODO: Autoupdate comments
 function loadComment(props) {
   let script = document.createElement("script")

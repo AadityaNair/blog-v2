@@ -1,10 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
+
+import BlogHeader from "../components/blogheader"
 import Footer from "../components/footer"
 import Header from "../components/header"
-import Metadata from "../components/meta"
-import BlogHeader from "../components/blogheader"
 import IndexNavigation from "../components/indexnavigation"
+import Metadata from "../components/meta"
+
 import "../styles/mystyle.css"
 
 export default (props) => {

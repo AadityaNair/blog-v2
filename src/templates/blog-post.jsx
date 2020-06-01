@@ -1,10 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
+
+import BlogHeader from "../components/blogheader"
+import Comments from "../components/comments"
 import Footer from "../components/footer"
 import Header from "../components/header"
 import Metadata from "../components/meta"
-import BlogHeader from "../components/blogheader"
-import Comments from "../components/comments"
+
 // TODO: Move across posts. graphql has edges>next/previous. Integrate that
 // TODO: Move back from a post
 // TODO: Recommended Posts
