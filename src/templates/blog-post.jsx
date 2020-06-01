@@ -13,6 +13,9 @@ import Metadata from "../components/meta"
 // TODO: Table of Contents
 // TODO: Use prismJS's highlight-line where possible
 import "../styles/mystyle.css"
+require("prismjs/plugins/line-numbers/prism-line-numbers.css")
+require("prismjs/plugins/command-line/prism-command-line.css")
+require("prismjs/themes/prism-solarizedlight.css") // TODO: If-else for a dark theme
 
 export default (props) => {
   const post = props.data.markdownRemark
