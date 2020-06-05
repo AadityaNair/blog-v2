@@ -87,15 +87,7 @@ dev_plugins = [
       ],
     },
   },
-  {
-    // TODO: Move to production later
-    resolve: `gatsby-plugin-react-helmet-canonical-urls`,
-    options: {
-      // TODO: Has some option for trailing slashes. Check if it is important
-      // Also figure out why canonical URL is important and the cost of having it different from actual URL
-      siteUrl: config.metadata.siteUrl,
-    },
-  },
+  `gatsby-plugin-remove-trailing-slashes`,
 ]
 
 prod_plugins = [
@@ -153,6 +145,13 @@ prod_plugins = [
     resolve: `gatsby-plugin-sitemap`,
     options: {
       exclude: [`/tags`],
+    },
+  },
+  {
+    resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+    options: {
+      siteUrl: config.metadata.siteUrl,
+      noTrailingSlash: true,
     },
   },
   { resolve: `gatsby-plugin-netlify` },
