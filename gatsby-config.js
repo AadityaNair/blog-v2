@@ -131,6 +131,9 @@ prod_plugins = [
       theme_color: config.currentTheme["highlight"],
       display: `standalone`,
       icon: `static/icon.svg`,
+      icon_options: {
+        purpose: `maskable`, // TODO: Actually create a maskable icon
+      },
     },
   },
   {
