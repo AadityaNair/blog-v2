@@ -1,4 +1,4 @@
-/* TODO: Sort things more coherently */
+/* TODO: SASS can probably make this smaller */
 
 #markdown {
   @apply text-blogtext mt-4 mb-16 font-text;
@@ -10,26 +10,19 @@
   }
 }
 
-#markdown pre {
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
+#markdown a {
+  @apply text-texthyperlink;
 }
-#markdown pre::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+
+#markdown blockquote {
+  @apply ml-1;
+  @apply border-solid border-l-2 pl-2 border-gray;
+  @apply italic;
 }
 
 #markdown h2 {
   @apply text-3xl font-bold text-blogbold;
   @apply mt-8;
-}
-
-#markdown a {
-  @apply text-texthyperlink;
-}
-
-#markdown p {
-  /* Spacing between */
-  @apply mt-2;
 }
 
 #markdown h3 {
@@ -38,30 +31,32 @@
   @apply mt-4;
 }
 
-@screen md {
-  #markdown pre {
-    /* Slight more padding than the rest of text */
-    @apply mx-8;
-  }
-}
-#markdown blockquote {
-  /* TODO: Cannot really be distinguished by the lines in blogheader */
-  @apply ml-1;
-  @apply border-solid border-l-2 pl-2 border-gray;
-  @apply italic;
+#markdown p {
+  @apply mt-2;
 }
 
-#markdown ul {
-  @apply list-disc list-inside;
-}
-
-#markdown ol {
-  @apply list-decimal list-inside;
+#markdown strong {
+  @apply text-blogbold;
 }
 
 #markdown li {
   @apply mt-1;
 }
+#markdown ol {
+  @apply list-decimal list-inside;
+}
+#markdown ul {
+  @apply list-disc list-inside;
+}
+
+/* CSS Definitions for a Code Blocks */
+
+@screen md {
+  #markdown pre {
+    @apply mx-8;
+  }
+}
+
 #markdown code {
   @apply whitespace-pre-wrap; /* This helps inline code to wrap around text and not have a horizontal scroll*/
   @apply font-mono;
@@ -71,6 +66,10 @@
   @apply whitespace-pre; /* But we don't want code blocks to do that. Hence restoring initial state for those */
 }
 
-#markdown strong {
-  @apply text-blogbold;
+#markdown pre {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+#markdown pre::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
