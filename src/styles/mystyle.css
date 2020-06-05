@@ -7,17 +7,9 @@
 
 @import "tailwindcss/utilities";
 
-@import "./comments.css";
 @import "./defaults.css";
-@import "./markdown.css";
-@import "./prism.css";
 /* TODO: Investigate default CSS for some classes */
 
-/* TODO: Check if having a separate CSS file for blog post specific CSS has merit? */
-/* TODO: Move prismJS requires from blog-post.jsx to here.
-   Maybe this helps: https://github.com/webpack-contrib/css-loader
-   This module is already available.
-*/
 /* TODO: Switch themes from website itself
 This might help: https://github.com/adamwathan/theming-tailwind-demo
 Also a plugin gatsby-dark-mode */
