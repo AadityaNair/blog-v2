@@ -153,7 +153,14 @@ prod_plugins = [
       noTrailingSlash: true,
     },
   },
-  { resolve: `gatsby-plugin-netlify` },
+  {
+    resolve: `gatsby-plugin-netlify`,
+    options: {
+      mergeSecurityHeaders: true,
+      mergeLinkHeaders: true,
+      mergeCachingHeaders: true,
+    },
+  },
   `gatsby-plugin-netlify-cache`,
   `gatsby-plugin-preact`,
 ]
