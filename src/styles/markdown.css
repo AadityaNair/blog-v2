@@ -1,9 +1,13 @@
-/* TODO: Sort things more coherently 
-   TODO: Import all classes for #markdown to here. (from blog-post.jsx)
-*/
+/* TODO: Sort things more coherently */
 
 #markdown {
-  @apply text-blogtext;
+  @apply text-blogtext mt-4 mb-16 font-text;
+}
+
+@screen md {
+  #markdown {
+    @apply text-xl;
+  }
 }
 
 #markdown pre {

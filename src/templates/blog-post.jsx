@@ -39,7 +39,7 @@ export default (props) => {
         compDate={post.frontmatter.compDate}
       />
 
-      <main id="markdown" className="mt-4 mb-16 font-text md:text-xl">
+      <main id="markdown">
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </main>
       <hr className="mb-16" />
