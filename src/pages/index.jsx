@@ -12,8 +12,6 @@ import Resume from "../assets/cv.svg"
 
 import "../styles/mystyle.css"
 
-// TODO: LighthouseCI
-// TODO: Netlify Build Plugins
 // TODO: A bit of transition animations: animeJS, gatsby-transition-link
 // TODO: RSS Feeds
 // TODO: google analytics
@@ -41,7 +39,7 @@ export default ({ data }) => (
       </strong>
       , a <em> {data.site.siteMetadata.jobTitle}</em>.
     </h1>
-    <h3 className="md:text-3xl ">{data.site.siteMetadata.description}</h3>
+    <h2 className="md:text-3xl ">{data.site.siteMetadata.description}</h2>
 
     <nav className=" flex flex-row space-x-6 pt-6 text-nav md:text-2xl">
       <Link to="/about">
