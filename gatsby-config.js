@@ -1,8 +1,6 @@
 config = require("./conf")
 
 metadata = config.metadata
-// TODO: Investigate all plugin features
-// TODO: MDX integration, remote graphql, latex, gatsby remark code titles
 // TODO: Content Security Policy features
 dev_plugins = [
   {
@@ -24,6 +22,8 @@ dev_plugins = [
   `gatsby-transformer-sharp`,
   `gatsby-plugin-catch-links`,
   `gatsby-plugin-react-helmet`,
+  `gatsby-plugin-mdx`,
+  `gatsby-plugin-remove-trailing-slashes`,
   {
     resolve: `gatsby-plugin-postcss`,
     options: {
@@ -51,7 +51,7 @@ dev_plugins = [
           options: { icon: false },
         },
         {
-          resolve: "gatsby-remark-external-links", //TODO: Not working
+          resolve: "gatsby-remark-external-links",
           options: { target: "_blank" },
         },
         {
@@ -87,7 +87,6 @@ dev_plugins = [
       ],
     },
   },
-  `gatsby-plugin-remove-trailing-slashes`,
 ]
 
 prod_plugins = [
