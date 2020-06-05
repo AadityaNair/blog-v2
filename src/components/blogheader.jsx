@@ -15,16 +15,15 @@ export default (props) => (
     <Link to={props.slug}>
       <h1 className="text-3xl font-black font-head text-link">{props.title}</h1>
     </Link>
-    <summary>
-      <div className="flex text-xs md:text-base font-subtext divide-x-2">
-        <div className="border-solid border-r-1 border-l-2 pl-2 pr-4 border-lines">
-          Published <time dateTime={props.compDate}>{props.date}</time>{" "}
-        </div>
-        <div className="flex flex-row space-x-2 pl-2 pr-4 border-lines italic underline">
-          {lstags(props.tags)}
-        </div>
-        <div className="border-lines pl-2">{props.timeToRead} min read</div>
+
+    <div className="flex text-xs md:text-base font-subtext divide-x-2 list-none">
+      <div className="border-solid border-r-1 border-l-2 pl-2 pr-4 border-lines">
+        Published <time dateTime={props.compDate}>{props.date}</time>{" "}
       </div>
-    </summary>
+      <div className="flex flex-row space-x-2 pl-2 pr-4 border-lines italic underline">
+        {lstags(props.tags)}
+      </div>
+      <div className="border-lines pl-2">{props.timeToRead} min read</div>
+    </div>
   </Fragment>
 )
