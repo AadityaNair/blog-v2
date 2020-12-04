@@ -75,6 +75,8 @@ dev_plugins = [
   {
     // TODO: Performance: Reduce fonts download to the exact style(or even character) we need
     // TODO Try using the NPM packages or webfont-loader whichever works
+    // TODO: Replace this plugin. Below is deprecated. Find something new.
+    // TODO: Performance: Try subfont
     resolve: `gatsby-plugin-web-font-loader`,
     options: {
       google: {
@@ -84,7 +86,7 @@ dev_plugins = [
           "IBM Plex Mono",
           "Merriweather Sans",
           "Source Code Pro",
-          "Source Sans Pro:400,400:italic",
+          "Source Sans Pro:400",
         ],
       },
     },
