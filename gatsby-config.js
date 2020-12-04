@@ -83,7 +83,7 @@ dev_plugins = [
           "IBM Plex Mono",
           "Merriweather Sans",
           "Source Code Pro",
-          "Source Sans Pro:400",
+          "Source Sans Pro:400&display=swap",
         ],
       },
     },
