@@ -37,6 +37,7 @@
     "gatsby-plugin-sass": "^2.7.0",
     "gatsby-plugin-sharp": "^2.10.0",
     "gatsby-plugin-sitemap": "^2.8.0",
+    "gatsby-plugin-subfont": "^2.5.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-autolink-headers": "^2.7.0",
     "gatsby-remark-external-links": "^0.0.4",

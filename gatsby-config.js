@@ -73,10 +73,7 @@ dev_plugins = [
     },
   },
   {
-    // TODO: Performance: Reduce fonts download to the exact style(or even character) we need
-    // TODO Try using the NPM packages or webfont-loader whichever works
-    // TODO: Replace this plugin. Below is deprecated. Find something new.
-    // TODO: Performance: Try subfont
+    // TODO: Replace this plugin. Below is deprecated. Try using the NPM packages or webfont-loader whichever works
     resolve: `gatsby-plugin-web-font-loader`,
     options: {
       google: {
@@ -89,6 +86,14 @@ dev_plugins = [
           "Source Sans Pro:400",
         ],
       },
+    },
+  },
+  {
+    resolve: `gatsby-plugin-subfont`,
+    options: {
+      silent: true,
+      fallback: false,
+      inlineFonts: true,
     },
   },
 ]
