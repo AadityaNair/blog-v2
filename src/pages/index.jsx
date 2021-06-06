@@ -2,7 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
 
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import Metadata from "../components/meta"
 
 import LinkedIn from "../assets/linkedin.svg"
@@ -28,10 +29,10 @@ export default ({ data }) => (
       description={data.site.siteMetadata.description} // Is there a better description possible?
     />
 
-    <Img
-      className="rounded-full"
-      fixed={data.myphoto.childImageSharp.fixed}
-      alt="author thumb"
+    <GatsbyImage
+        className="rounded-full"
+        image={data.myphoto.childImageSharp.gatsbyImageData}
+        alt="author thumb"
     />
 
     <h1 className="md:text-5xl text-lg ">
@@ -89,9 +90,7 @@ export const query = graphql`
     }
     myphoto: file(relativePath: { eq: "me.jpg" }) {
       childImageSharp {
-        fixed(height: 150, width: 150) {
-          ...GatsbyImageSharpFixed
-        }
+        gatsbyImageData(layout: FIXED, height: 150, width: 150, placeholder: BLURRED)
       }
     }
   }

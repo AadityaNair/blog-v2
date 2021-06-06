@@ -18,6 +18,7 @@ dev_plugins = [
     },
   },
   `gatsby-plugin-sass`,
+  `gatsby-plugin-image`,
   `gatsby-plugin-sharp`,
   `gatsby-transformer-sharp`,
   `gatsby-plugin-catch-links`,
