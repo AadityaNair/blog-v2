@@ -71,6 +71,7 @@ export default ({ data }) => (
   </div>
 )
 
+// TODO: Center the photo properly
 export const query = graphql`
   query {
     site {
@@ -89,7 +90,7 @@ export const query = graphql`
     myphoto: file(relativePath: { eq: "me.jpg" }) {
       childImageSharp {
         fixed(height: 150, width: 150) {
-          ...GatsbyImageSharpFixed_tracedSVG
+          ...GatsbyImageSharpFixed
         }
       }
     }
