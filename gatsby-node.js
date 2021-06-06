@@ -63,3 +63,20 @@ exports.createPages = async ({ graphql, actions }) => {
     pathPrefix: "/blog",
   })
 }
+
+// TODO: Show in-progress pages when running in developement mode but not in production mode
+//   const allowedPosts = allPosts.filter(
+    // post =>
+      // process.env.NODE_ENV === "development" || post.node.frontmatter.published
+  // )
+
+  // allowedPosts.forEach(({ node }) => {
+    // createPage({
+      // path: node.frontmatter.slug,
+      // component: articleTemplate,
+      // context: {
+        // additional data can be passed via context
+        // slug: node.frontmatter.slug,
+      // },
+    // })
+  // })

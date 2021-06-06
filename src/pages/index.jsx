@@ -17,6 +17,8 @@ import "../styles/mystyle.css"
 // TODO: google analytics
 // TODO: Colour Switching favicon
 // TODO: Use SVG favicon wherever possible, https://catalin.red/svg-favicon-light-dark-theme/
+// TODO: Change Image
+// TODO: Auto Dark Mode
 
 export default ({ data }) => (
   <div className="flex flex-col items-center justify-center h-screen font-website bg-background text-text">
