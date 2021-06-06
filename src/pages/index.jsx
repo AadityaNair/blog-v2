@@ -71,7 +71,7 @@ export default ({ data }) => (
   </div>
 )
 
-// TODO: Center the photo properly
+// TODO: Higher Quality Photo?
 export const query = graphql`
   query {
     site {
