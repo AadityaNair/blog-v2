@@ -155,7 +155,7 @@ prod_plugins = [
   {
     resolve: `gatsby-plugin-sitemap`,
     options: {
-      exclude: [`/tags`],
+      excludes: [`/tags`],
     },
   },
   {
