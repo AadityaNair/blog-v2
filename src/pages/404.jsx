@@ -11,7 +11,7 @@ const FourOhFour = () => (
     <Metadata isBlogPost={false} title="Lost..." description={null} />
 
     <main className="flex flex-col items-center m-auto md:text-5xl text-xla font-extrabold font-website">
-      <span className="flex flex-col md:flex-row">
+      <span className="flex flex-col xl:flex-row items-center">
         <div> You have reached the world's edge.</div>
         <div className="ml-0.5"> None but devils play past here.... </div>
       </span>
