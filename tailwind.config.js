@@ -1,6 +1,7 @@
 config = require("./conf")
 
 module.exports = {
+  mode: "jit",
   purge: ["./src/**/*.jsx"],
   // TODO: Push the fontFamily to conf.js. Somehow
   theme: {
