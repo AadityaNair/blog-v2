@@ -8,7 +8,7 @@ import "../styles/mystyle.css"
 
 // TODO: Proper workex information
 // TODO: About Website page. with commit logs
-export default () => (
+const About = () => (
   <div className="flex flex-col items-center justify-between h-screen text-text">
     <Metadata
       isBlogPost={false}
@@ -78,3 +78,4 @@ export default () => (
     <Footer />
   </div>
 )
+export default About;

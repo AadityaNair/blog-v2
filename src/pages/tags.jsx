@@ -7,7 +7,7 @@ import Header from "../components/header"
 import Metadata from "../components/meta"
 
 // This can probably look better
-export default ({ data }) => (
+const Tags = ({ data }) => (
   <div className="flex flex-col h-screen md:mx-64 mx-8 font-website text-text">
     <Metadata isBlogPost={false} title="Tag Index" description={null} />
     <Header />
@@ -31,6 +31,7 @@ export default ({ data }) => (
     <Footer />
   </div>
 )
+export default Tags;
 
 export const query = graphql`
   query {

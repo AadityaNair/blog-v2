@@ -15,7 +15,7 @@ import Metadata from "../components/meta"
 import "../styles/mystyle.css"
 import "../styles/markdown.css"
 
-export default (props) => {
+const BlogPost = (props) => {
   const post = props.data.markdownRemark
   return (
     <div className="flex flex-col h-screen md:mx-64 mx-8 text-text">
@@ -47,6 +47,7 @@ export default (props) => {
     </div>
   )
 }
+export default BlogPost;
 
 export const query = graphql`
   query($slug: String!) {

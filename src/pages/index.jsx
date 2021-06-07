@@ -21,7 +21,7 @@ import "../styles/mystyle.css"
 // TODO: Change Image
 // TODO: Auto Dark Mode
 
-export default ({ data }) => (
+const Index = ({ data }) => (
   <div className="flex flex-col items-center justify-center h-screen font-website bg-background text-text">
     <Metadata
       isBlogPost={false}
@@ -71,6 +71,7 @@ export default ({ data }) => (
     </nav>
   </div>
 )
+export default Index;
 
 // TODO: Higher Quality Photo?
 export const query = graphql`

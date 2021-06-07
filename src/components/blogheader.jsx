@@ -10,7 +10,7 @@ function lstags(tagstring) {
   return l
 }
 // TODO: Try StaticQuery here
-export default (props) => (
+const BlogHeader = (props) => (
   <Fragment>
     <Link to={props.slug}>
       <h1 className="text-3xl font-black font-head text-link">{props.title}</h1>
@@ -27,3 +27,4 @@ export default (props) => (
     </div>
   </Fragment>
 )
+export default BlogHeader;

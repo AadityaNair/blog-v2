@@ -9,7 +9,7 @@ import Metadata from "../components/meta"
 
 import "../styles/mystyle.css"
 
-export default (props) => {
+const BlogIndex = (props) => {
   const data = props.data
   const { pageContext } = props
   const { previousPagePath, nextPagePath } = pageContext
@@ -52,6 +52,7 @@ export default (props) => {
     </div>
   )
 }
+export default BlogIndex;
 
 export const query = graphql`
   query($skip: Int!, $limit: Int!) {

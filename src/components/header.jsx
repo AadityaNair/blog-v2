@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 import "../styles/mystyle.css"
 
-export default (props) => (
+const Header = (props) => (
   <header className="items-center justify-center flex flex-col">
     <h1 className="md:text-6xl text-4xl">
       <Link
@@ -32,3 +32,4 @@ export default (props) => (
     </div>
   </header>
 )
+export default Header;

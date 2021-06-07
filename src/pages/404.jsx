@@ -5,7 +5,7 @@ import Footer from "../components/footer"
 import Metadata from "../components/meta"
 // TODO: Integrate proper witcher 3 background
 
-export default () => (
+const FourOhFour = () => (
   <div className="flex flex-col items-center justify-between h-screen text-text">
     <Metadata isBlogPost={false} title="Lost..." description={null} />
 
@@ -19,3 +19,4 @@ export default () => (
     <Footer />
   </div>
 )
+export default FourOhFour;
