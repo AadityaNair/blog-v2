@@ -1,4 +1,5 @@
 import React from "react"
+import "../styles/comments.css"
 
 const config = require("../../conf")
 
