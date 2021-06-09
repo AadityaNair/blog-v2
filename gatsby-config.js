@@ -23,7 +23,7 @@ dev_plugins = [
   `gatsby-transformer-sharp`,
   `gatsby-plugin-catch-links`,
   `gatsby-plugin-react-helmet`,
-  `gatsby-plugin-mdx`,
+  // `gatsby-plugin-mdx`,
   `gatsby-plugin-remove-trailing-slashes`,
   {
     resolve: `gatsby-plugin-postcss`,
@@ -75,6 +75,7 @@ dev_plugins = [
   },
   {
     // TODO: Replace this plugin. Below is deprecated. Try using the NPM packages or webfont-loader whichever works
+    // TODO: Currently this only provides a CSS file which refers to Google CDN. Instead, self-host the files somehow.
     resolve: `gatsby-plugin-web-font-loader`,
     options: {
       google: {
