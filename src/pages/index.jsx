@@ -20,6 +20,8 @@ import "../styles/mystyle.css"
 // TODO: Use SVG favicon wherever possible, https://catalin.red/svg-favicon-light-dark-theme/
 // TODO: Change Image
 // TODO: Auto Dark Mode
+// TODO: CSS Modules: https://www.gatsbyjs.com/docs/how-to/styling/css-modules/
+// TODO: Site Performance: https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/
 
 const Index = ({ data }) => (
   <div className="flex flex-col items-center justify-center h-screen font-website bg-background text-text">
