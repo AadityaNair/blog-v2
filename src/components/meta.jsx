@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet"
 // Also lookup, https://developers.google.com/search/docs/guides/intro-structured-data
 // TODO: Replace amnair.dev with a variable
 // TODO: Try StaticQuery here
+// TODO: Search results on Google is messed up.
 
 function Metadata(props) {
   return (

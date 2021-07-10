@@ -154,6 +154,7 @@ prod_plugins = [
       precachePages: [`/about`, `/blog/*`],
     },
   },
+  // TODO: Sitemap not in proper location. Investigate.
   {
     resolve: `gatsby-plugin-sitemap`,
     options: {
