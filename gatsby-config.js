@@ -169,14 +169,6 @@ prod_plugins = [
     },
   },
   {
-    resolve: `gatsby-plugin-netlify`,
-    options: {
-      mergeSecurityHeaders: true,
-      mergeLinkHeaders: true,
-      mergeCachingHeaders: true,
-    },
-  },
-  {
     resolve: `gatsby-plugin-google-analytics`,
     options: {
       trackingId: "UA-169274463-1",
@@ -204,7 +196,6 @@ prod_plugins = [
       //cookieDomain: "example.com",
     },
   },
-  `gatsby-plugin-netlify-cache`,
   `gatsby-plugin-preact`,
 ]
 
