@@ -26,20 +26,26 @@ const About = () => (
         >
           Aaditya M Nair
         </abbr>
-        . I currently live in Gurugram, India.
+        . I currently live in London, UK.
       </section>
       <section>
-        I am currently working with{" "}
+          I am currently working for Facebook (or Meta) as a Production Engineer in the Host Management team.
+          My work is all about managing the company's millions of servers at scale. This involves overseeing
+          the configuration, health, and security of all of these servers as well as building features for the
+          ever growing needs of the service owners.
+      </section>
+      <section>
+        I used to work with{" "}
         <a href="https://tower-research.com" className="text-texthyperlink">
           {" "}
           Tower Research Capital{" "}
         </a>
-        as a Software Engineer. Here, I work with the recently formed
+        as a Software Engineer. There, I worked with the recently formed
         Information Security team. Me and my team are responsible for making and
         enforcing all policies related to security and compliance. We also
         collaborate with other teams improve observability into the tools they
         manage, identify and remediate any security bugs we find while also
-        promoting security by design on new projects. This is my first actual
+        promoting security by design on new projects. This was my first actual
         job post college :-).
       </section>
       <section>
